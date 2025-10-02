@@ -1,0 +1,25 @@
+.home-container {
+  text-align: center;
+  margin-top: 100px;
+  font-family: Arial, sans-serif;
+}
+
+.highlight {
+  color: #007acc;
+  font-weight: bold;
+}
+
+.btn-sobre {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-sobre:hover {
+  background-color: #005fa3;
+}

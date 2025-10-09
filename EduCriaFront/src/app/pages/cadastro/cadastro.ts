@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // Adicione
+import { CommonModule } from '@angular/common'; // Adicione
 import { AuthService } from '../../shared/auth.service';
 
 @Component({
@@ -7,22 +9,34 @@ import { AuthService } from '../../shared/auth.service';
   templateUrl: './cadastro.html',
   styleUrls: ['./cadastro.css'],
   standalone: true,
+  imports: [FormsModule, CommonModule] // Adicione esta linha!
 })
 export class Cadastro {
 
-  constructor(private router: Router, authService: AuthService) { }
-
   email: string = '';
   senha: string = '';
-  nome: string = ''
+  nome: string = '';
+
+  constructor(private router: Router, private authService: AuthService) { }
 
   voltarParaLogin() {
     this.router.navigate(['/login']);
   }
 
   fazerCadastro() {
-    // this.authService.cadastrar().subscribe({
-
-    // });
+    if (!this.nome || !this.email || !this.senha) {
+      alert('Preencha todos os campos!');
+      return;
+    }
+    
+    this.authService.cadastrar(this.nome, this.email, this.senha).subscribe({
+      next: () => {
+        alert('Cadastro realizado com sucesso!');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        alert('Erro ao cadastrar: ' + err.message);
+      }
+    });
   }
 }

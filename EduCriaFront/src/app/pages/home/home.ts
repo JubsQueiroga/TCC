@@ -16,4 +16,7 @@ export class Home{
   irParaSobre() {
     this.router.navigate(['/sobre']);
   }
+  irParaAtividades() {
+    this.router.navigate(['/atividades']);
+  }
 }

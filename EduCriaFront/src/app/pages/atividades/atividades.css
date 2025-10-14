@@ -1,10 +1,96 @@
-.sobre-container {
-  text-align: center;
-  margin-top: 100px;
-  font-family: Arial, sans-serif;
+.header {
+  background-color: #0c2d5a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+  position: relative;
 }
 
-.highlight {
-  color: #007acc;
+.btn-voltar {
+  position: absolute;
+  left: 15px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seta-esquerda {
+  color: #0c2d5a;
+  font-size: 24px;
   font-weight: bold;
+}
+
+.titulo {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+
+.relatorio-container {
+  width: 95%;
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: #f1f4f8;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.titulo-principal {
+  display: none;
+}
+
+
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px;
+  justify-items: center;
+}
+
+.card {
+  width: 90%;
+  background-color: #dce3eb;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.card:nth-child(3) {
+  grid-column: 1; 
+}
+
+.card h3 {
+  color: #1e2a3a;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.card p {
+  background-color: #1e2a3a;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+
+@media (max-width: 768px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+  }
 }

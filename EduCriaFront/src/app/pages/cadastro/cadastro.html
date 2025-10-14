@@ -1,17 +1,23 @@
-<h2>Cadastro</h2>
-<form (ngSubmit)="fazerCadastro()">
-  <label>Nome:</label>
-  <input type="text" name="nome" [(ngModel)]="nome" required><br><br>
+<div class="cadastro-container">
+  <h2>Cadastro</h2>
 
-  <label>Email:</label>
-  <input type="email" name="email" [(ngModel)]="email" required><br><br>
+  <form (ngSubmit)="fazerCadastro()">
+    <label>Nome:</label>
+    <input type="text" name="nome" [(ngModel)]="nome" required><br><br>
 
-  <label>Senha:</label>
-  <input type="password" name="senha" [(ngModel)]="senha" required><br><br>
+    <label>Email:</label>
+    <input type="email" name="email" [(ngModel)]="email" required><br><br>
 
-  <button type="submit" (click)="fazerCadastro()">Cadastrar</button>
-</form>
+    <label>Senha:</label>
+    <input type="password" name="senha" [(ngModel)]="senha" required><br><br>
 
-<p>Já tem conta?
-  <button type="button" (click)="voltarParaLogin()">Fazer login</button>
-</p>
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <!-- Texto centralizado com botão abaixo -->
+  <p class="login-texto">
+    Já tem conta?
+    <br />
+    <button type="button" (click)="voltarParaLogin()">Fazer login</button>
+  </p>
+</div>

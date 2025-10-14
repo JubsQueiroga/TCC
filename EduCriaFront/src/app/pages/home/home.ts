@@ -19,4 +19,10 @@ export class Home{
   irParaAtividades() {
     this.router.navigate(['/atividades']);
   }
+  irParaNoticias() {
+    this.router.navigate(['/noticias']);
+  }
+irParaRelatorios() {
+    this.router.navigate(['/relatorios']);
+  }
 }

@@ -3,14 +3,18 @@ import { Login } from './pages/login/login';
 import { Cadastro } from './pages/cadastro/cadastro';
 import { Home } from './pages/home/home';
 import { Sobre } from './pages/sobre/sobre';
-import { AuthGuard } from './shared/auth.guard'; // 👈 importar aqui
+import { Noticias } from './pages/noticias/noticias';
+import { AuthGuard } from './shared/auth.guard'; 
 import { Atividades } from './pages/atividades/atividades';
+import { Relatorios } from './pages/relatorios/relatorios';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: Login },
   { path: 'cadastro', component: Cadastro },
-  {path: 'atividades', component: Atividades},
+  { path: 'atividades', component: Atividades },
   { path: 'home', component: Home, canActivate: [AuthGuard] },   
-  { path: 'sobre', component: Sobre, canActivate: [AuthGuard] }  
+  { path: 'sobre', component: Sobre, canActivate: [AuthGuard] },
+  { path: 'noticias', component: Noticias, canActivate: [AuthGuard] },
+  { path: 'relatorios', component: Relatorios, canActivate: [AuthGuard] },
 ];

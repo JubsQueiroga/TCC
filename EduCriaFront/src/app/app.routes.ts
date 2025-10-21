@@ -7,6 +7,9 @@ import { Noticias } from './pages/noticias/noticias';
 import { AuthGuard } from './shared/auth.guard'; 
 import { Atividades } from './pages/atividades/atividades';
 import { Relatorios } from './pages/relatorios/relatorios';
+import { Calendario } from './pages/calendario/calendario';
+import { Graficos } from './pages/graficos/graficos';
+import { Jogos } from './pages/jogos/jogos';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,4 +20,7 @@ export const routes: Routes = [
   { path: 'sobre', component: Sobre, canActivate: [AuthGuard] },
   { path: 'noticias', component: Noticias, canActivate: [AuthGuard] },
   { path: 'relatorios', component: Relatorios, canActivate: [AuthGuard] },
+  { path: 'calendario', component: Calendario, canActivate: [AuthGuard]},
+  { path: 'graficos', component: Graficos, canActivate: [AuthGuard]},
+  { path: 'jogos', component: Jogos, canActivate: [AuthGuard]}
 ];

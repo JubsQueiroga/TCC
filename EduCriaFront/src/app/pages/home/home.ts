@@ -25,4 +25,13 @@ export class Home{
 irParaRelatorios() {
     this.router.navigate(['/relatorios']);
   }
+  irParaCalendario() {
+    this.router.navigate(['/calendario']);
+  }
+  irParaGraficos() {
+    this.router.navigate(['/graficos']);
+  }
+  irParaJogos() {
+    this.router.navigate(['/jogos']);
+  }
 }

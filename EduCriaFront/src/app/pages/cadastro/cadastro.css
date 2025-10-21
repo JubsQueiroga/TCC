@@ -1,0 +1,81 @@
+/* Estilo geral centralizado */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Container do formulário de cadastro */
+.cadastro-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+}
+
+/* Título */
+.cadastro-container h2 {
+  margin-bottom: 20px;
+  color: #0c2340;
+  font-size: 28px;
+}
+
+/* Inputs */
+.cadastro-container input[type="text"],
+.cadastro-container input[type="email"],
+.cadastro-container input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Foco nos campos */
+.cadastro-container input:focus {
+  border-color: #0c2340;
+  outline: none;
+  box-shadow: 0 0 5px rgba(12, 35, 64, 0.3);
+}
+
+/* Botão de cadastrar */
+.cadastro-container button[type="submit"] {
+  background-color: #0c2340;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.cadastro-container button[type="submit"]:hover {
+  background-color: #12284f;
+}
+
+/* Texto e botão de login */
+.cadastro-container .login-texto {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.cadastro-container .login-texto button {
+  background: none;
+  border: none;
+  color: #0c2340;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 15px;
+  margin-top: 8px;
+}

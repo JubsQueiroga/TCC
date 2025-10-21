@@ -1,0 +1,22 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form (ngSubmit)="fazerLogin()">
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="email" name="email" required><br><br>
+
+    <label>Senha:</label>
+    <input type="password" [(ngModel)]="senha" name="senha" required><br><br>
+
+    <button type="submit">Entrar</button>
+  </form>
+
+  <p *ngIf="erro" style="color: red;">{{ erro }}</p>
+
+  <!-- Centralizado e com botão embaixo -->
+  <p class="cadastro-texto">
+    Não tem conta?
+    <br />
+    <button type="button" (click)="irParaCadastro()">Cadastre-se</button>
+  </p>
+</div>

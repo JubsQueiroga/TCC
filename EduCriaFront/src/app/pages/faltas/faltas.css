@@ -1,0 +1,247 @@
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+  padding: 24px;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* SEÇÃO 1: CABEÇALHO */
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin: 0 0 16px 0;
+}
+
+.total-faltas {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+}
+
+.total-faltas .label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.total-faltas .numero {
+  font-size: 28px;
+  font-weight: bold;
+  color: #4f46e5;
+}
+
+/* SEÇÃO 2: GRÁFICO */
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 24px 0;
+}
+
+.grafico {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.grafico-container {
+  display: flex;
+  gap: 16px;
+  min-height: 350px;
+}
+
+.eixo-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.barras {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  align-items: flex-end;
+  padding-bottom: 60px;
+  border-bottom: 2px solid #e5e7eb;
+  border-left: 2px solid #e5e7eb;
+  position: relative;
+}
+
+.barra-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 60px;
+}
+
+.barra-wrapper {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.barra {
+  width: 80%;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.barra:hover {
+  opacity: 0.8;
+  transform: translateY(-4px);
+}
+
+.valor-barra {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.label-barra {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #374151;
+  text-align: center;
+  transform: rotate(-45deg);
+  white-space: nowrap;
+  position: absolute;
+  bottom: -45px;
+  transform-origin: center;
+}
+
+/* SEÇÃO 3: LISTA DETALHADA */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lista-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  transition: background-color 0.2s;
+}
+
+.lista-item:hover {
+  background-color: #f9fafb;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.materia-nome {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 16px;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.faltas-count {
+  color: #6b7280;
+}
+
+.alerta {
+  font-size: 18px;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.porcentagem {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* SEÇÃO 4: LEGENDA */
+.legenda {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
+.legenda-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.cor-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+  
+  .barras {
+    gap: 12px;
+  }
+  
+  .barra-item {
+    min-width: 40px;
+  }
+}

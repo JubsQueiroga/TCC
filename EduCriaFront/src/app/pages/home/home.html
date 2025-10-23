@@ -10,16 +10,17 @@
 
   <div class="buttonsHeader">
     <div class="perfil">
-
-      <button class="icone-perfil" (click)="irParaPerfil()">
-      <img src="img/perfil.png" alt="perfil" class="icone-perfil">
-        </button>
-    </div>
-
-    <div class="buscar">
-      <button class="icone-buscar"><img src="img/edu (1).png" alt="perfil" ></button>
-
-    </div>
+         <button class="icone-perfil" (click)="toggleMenu()">  <!-- ⬅️ MUDE: irParaPerfil() para toggleMenu() -->
+    <img src="img/perfil.png" alt="Perfil">
+  </button>
+   </div>
+    <div class="menu-dropdown" *ngIf="menuAberto">
+    <div class="menu-header">NOME DO USUÁRIO</div>
+    <button (click)="irParaPerfil()">👤 MEU PERFIL</button>
+    <button (click)="irParaFaltas()">📊 GRÁFICO DE FALTAS</button>
+    <button (click)="irParaBoletim()">📄 ACESSAR BOLETIM</button>
+    <button (click)="sair()">🚪 SAIR</button>
+  </div>
   </div>
 </header>
 <div>

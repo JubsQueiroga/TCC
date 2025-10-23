@@ -1,0 +1,101 @@
+
+<div class="container">
+  <div class="content">
+    
+    <!-- SEÇÃO 1: CABEÇALHO -->
+    <div class="card header-card">
+      <h1 class="title">Controle de Faltas</h1>
+      <p class="subtitle">Acompanhe suas faltas por matéria</p>
+      
+      <div class="total-faltas">
+        <span class="label">Total de faltas:</span>
+        <span class="numero">{{ totalFaltas }}</span>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 2: GRÁFICO DE BARRAS -->
+    <div class="card">
+      <h2 class="section-title">Faltas por Matéria</h2>
+      
+      <div class="grafico">
+        <div class="grafico-container">
+          <!-- Eixo Y (números) -->
+          <div class="eixo-y">
+            <span class="tick">{{ maxFaltas }}</span>
+            <span class="tick">{{ (maxFaltas * 0.75).toFixed(0) }}</span>
+            <span class="tick">{{ (maxFaltas * 0.5).toFixed(0) }}</span>
+            <span class="tick">{{ (maxFaltas * 0.25).toFixed(0) }}</span>
+            <span class="tick">0</span>
+          </div>
+
+          <!-- Barras -->
+          <div class="barras">
+            <div class="barra-item" *ngFor="let item of dados">
+              <div class="barra-wrapper">
+                <div 
+                  class="barra"
+                  [style.height.%]="(item.faltas / maxFaltas) * 100"
+                  [style.background-color]="getCorBarra(item.faltas, item.limiteTotal)">
+                  <span class="valor-barra">{{ item.faltas }}</span>
+                </div>
+              </div>
+              <span class="label-barra">{{ item.materia }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 3: LISTA DETALHADA -->
+    <div class="card">
+      <h2 class="section-title">Detalhes por Matéria</h2>
+      
+      <div class="lista">
+        <div class="lista-item" *ngFor="let item of dados">
+          
+          <!-- Cabeçalho da matéria -->
+          <div class="item-header">
+            <span class="materia-nome">{{ item.materia }}</span>
+            <div class="item-info">
+              <span class="faltas-count">{{ item.faltas }} / {{ item.limiteTotal }} faltas</span>
+              <span class="alerta" *ngIf="estaNoLimite(item.faltas, item.limiteTotal)">⚠️</span>
+            </div>
+          </div>
+          
+          <!-- Barra de progresso -->
+          <div class="progress-bar-bg">
+            <div 
+              class="progress-bar-fill"
+              [style.width.%]="calcularPorcentagem(item.faltas, item.limiteTotal)"
+              [style.background-color]="getCorBarra(item.faltas, item.limiteTotal)">
+            </div>
+          </div>
+          
+          <!-- Porcentagem -->
+          <div class="porcentagem">
+            {{ calcularPorcentagem(item.faltas, item.limiteTotal) }}% do limite utilizado
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO 4: LEGENDA -->
+    <div class="card legenda">
+      <div class="legenda-item">
+        <div class="cor-box" style="background-color:  #1e3a8a;"></div>
+        <span>Até 50% (OK)</span>
+      </div>
+      <div class="legenda-item">
+        <div class="cor-box" style="background-color: #f59e0b;"></div>
+        <span>50-75% (Atenção)</span>
+      </div>
+      <div class="legenda-item">
+        <div class="cor-box" style="background-color: #ef4444;"></div>
+        <span>75%+ (Risco)</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+*/

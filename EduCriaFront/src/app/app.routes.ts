@@ -11,6 +11,9 @@ import { Calendario } from './pages/calendario/calendario';
 import { Graficos } from './pages/graficos/graficos';
 import { Jogos } from './pages/jogos/jogos';
 import { Perfil } from './pages/perfil/perfil';
+import { Boletim } from './page/boletim/boletim';
+import { Faltas } from './pages/faltas/faltas';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -25,4 +28,6 @@ export const routes: Routes = [
   { path: 'graficos', component: Graficos, canActivate: [AuthGuard]},
   { path: 'jogos', component: Jogos, canActivate: [AuthGuard]},
   { path: 'perfil', component: Perfil, canActivate: [AuthGuard] },
+  { path: 'boletim', component: Boletim, canActivate: [AuthGuard] },
+  { path: 'faltas', component: Faltas, canActivate: [AuthGuard] },
 ];

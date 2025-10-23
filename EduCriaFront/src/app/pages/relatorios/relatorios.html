@@ -1,1 +1,17 @@
-<p>relatorios works!</p>
+<div class="header-container">
+  <button class="back-button" (click)="goBack()">
+    <span class="arrow-icon">←</span>
+  </button>
+  <h1 class="header-title">ATIVIDADES</h1>
+</div>
+
+<div class="container">
+  <div class="card" *ngFor="let materia of materias">
+    <h3>{{ materia.nome }}</h3>
+    <p class="status">{{ materia.status }}</p>
+
+    <div class="circle" [style.borderColor]="materia.cor">
+      <span>{{ materia.progresso }}%</span>
+    </div>
+  </div>
+</div>

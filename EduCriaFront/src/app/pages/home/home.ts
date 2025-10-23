@@ -5,13 +5,14 @@ import { Footer } from '../../shared/footer/footer';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.html',
+  templateUrl:'./home.html',
   styleUrls: ['./home.css'],
   imports: [Menu, Footer],
   standalone: true,
 })
 export class Home{
   constructor(private router: Router) {}
+
 
   irParaSobre() {
     this.router.navigate(['/sobre']);
@@ -33,5 +34,8 @@ irParaRelatorios() {
   }
   irParaJogos() {
     this.router.navigate(['/jogos']);
+  }
+  irParaPerfil() {
+    this.router.navigate(['/perfil']);
   }
 }

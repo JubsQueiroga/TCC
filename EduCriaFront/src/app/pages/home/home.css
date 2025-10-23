@@ -1,5 +1,8 @@
 /* home.css */
 .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   height: 120px;          
   background-color: #f8f9fa;
@@ -10,8 +13,9 @@
 
 .titulo-container {
   display: flex;
+  text-align: center;
   align-items: center;       /* alinha verticalmente */
-  justify-content: center;   /* centraliza horizontalmente no header */
+  justify-content: center;  /* centraliza horizontalmente no header */
   gap: 15px;                 /* espaço entre o chapéu e o texto */
   margin: 0;
   color: #0e3a70;
@@ -19,6 +23,51 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 36px;
   font-weight: 800;
+}
+
+.buttonsHeader {
+  display: flex;
+  width: auto;
+  position: absolute;
+  top: 20px;
+  right: 10px;  /* AJUSTE ESSE VALOR para mover mais à direita ou esquerda */
+  display: flex;
+  gap: -30px;  /* AJUSTE ESSE VALOR para aproximar ou afastar os ícones */
+  align-items: center;
+  z-index: 100;
+}
+
+.icone-buscar img{
+  width: 100px;
+  height: 100px;
+}
+
+ .icone-buscar {
+  display: flex;
+  width: 150px;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.icone-perfil{
+  display: flex;
+  width: 150px;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.icone-perfil img {
+  width: 100px;
+  height: 100px;
 }
 .subtitulo {
  font-size: 14px;

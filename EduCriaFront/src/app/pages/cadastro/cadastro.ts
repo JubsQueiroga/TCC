@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // Adicione
-import { CommonModule } from '@angular/common'; // Adicione
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../../shared/auth.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; // ✅ import do snackbar
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.html',
   styleUrls: ['./cadastro.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule] // Adicione esta linha!
+  imports: [FormsModule, CommonModule, MatSnackBarModule] // ✅ adiciona snackbar aqui
 })
 export class Cadastro {
 
@@ -17,7 +18,11 @@ export class Cadastro {
   senha: string = '';
   nome: string = '';
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private snackBar: MatSnackBar // ✅ injeta snackbar
+  ) { }
 
   voltarParaLogin() {
     this.router.navigate(['/login']);
@@ -25,17 +30,32 @@ export class Cadastro {
 
   fazerCadastro() {
     if (!this.nome || !this.email || !this.senha) {
-      alert('Preencha todos os campos!');
+      this.snackBar.open('⚠️ Preencha todos os campos!', 'Fechar', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        panelClass: ['warning-snackbar']
+      });
       return;
     }
     
     this.authService.cadastrar(this.nome, this.email, this.senha).subscribe({
       next: () => {
-        alert('Cadastro realizado com sucesso!');
+        this.snackBar.open('✅ Cadastro realizado com sucesso!', 'Fechar', {
+          duration: 7000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['center-snackbar']
+        });
         this.router.navigate(['/login']);
       },
       error: (err) => {
-        alert('Erro ao cadastrar: ' + err.message);
+        this.snackBar.open('❌ Erro ao cadastrar: ' + err.message, 'Fechar', {
+          duration: 7000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['snackbar-warning']
+        });
       }
     });
   }

@@ -79,3 +79,7 @@
   font-size: 15px;
   margin-top: 8px;
 }
+.mat-mdc-snack-bar-container.snackbar-warning {
+  bottom: 50% !important;
+  transform: translate(-50%, 50%) !important;
+}

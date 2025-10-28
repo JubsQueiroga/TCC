@@ -56,13 +56,30 @@ export class Cadastro {
         this.router.navigate(['/login']);
       },
       error: (err) => {
-        this.snackBar.open('❌ Erro ao cadastrar: ' + err.message, 'Fechar', {
-          duration: 7000,
+        let mensagemErro = '❌ Ocorreu um erro ao cadastrar. Tente novamente.';
+
+        if (err.status === 400) {
+          mensagemErro = '⚠️ Este e-mail já está cadastrado!';
+        } else if (err.status === 0) {
+          mensagemErro = '⚠️ Não foi possível conectar ao servidor.';
+        }
+
+        this.snackBar.open(mensagemErro, 'Fechar', {
+          duration: 4000,
           horizontalPosition: 'center',
           verticalPosition: 'top',
           panelClass: ['snackbar-warning']
         });
       }
     });
-  }
+    if (!this.email.endsWith('@gmail.com')) {
+  this.snackBar.open('⚠️ Apenas emails @gmail.com são permitidos!', 'Fechar', {
+    duration: 3000,
+    horizontalPosition: 'right',
+    verticalPosition: 'top',
+    panelClass: ['warning-snackbar']
+  });
+  return;
+}
+}
 }

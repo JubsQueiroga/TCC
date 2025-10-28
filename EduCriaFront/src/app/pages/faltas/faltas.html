@@ -1,0 +1,90 @@
+
+<div class="container">
+  <div class="content">
+    
+    <!-- CARD TOTAL -->
+    <div class="total-card">
+      <div class="total-info">
+        <h3>Total de Faltas no Bimestre</h3>
+        <div class="total-numero">{{ totalFaltas }}</div>
+      </div>
+    </div>
+
+    <!-- CARD GRÁFICO -->
+    <div class="grafico-card">
+      <h2 class="titulo">Faltas por Matéria</h2>
+      
+      <div class="grafico-area">
+        <div class="grafico-container">
+          <div class="eixo-y">
+            <span>{{ maxFaltas }}</span>
+            <span>{{ (maxFaltas * 0.75).toFixed(0) }}</span>
+            <span>{{ (maxFaltas * 0.5).toFixed(0) }}</span>
+            <span>{{ (maxFaltas * 0.25).toFixed(0) }}</span>
+            <span>0</span>
+          </div>
+
+          <div class="barras">
+            <div class="barra-item" *ngFor="let item of dados">
+              <div class="barra-wrapper">
+                <div 
+                  class="barra-coluna"
+                  [style.height.%]="(item.faltas / maxFaltas) * 100"
+                  [style.background-color]="getCorBarra(item.faltas, item.limiteTotal)">
+                  <span class="barra-valor">{{ item.faltas }}</span>
+                </div>
+              </div>
+              <span class="barra-label">{{ item.materia }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD DETALHES -->
+    <div class="detalhes-card">
+      <h2 class="titulo">Detalhes por Matéria</h2>
+      
+      <div class="lista">
+        <div class="lista-item" *ngFor="let item of dados">
+          <div class="item-header">
+            <span class="materia-nome">{{ item.materia }}</span>
+            <div class="item-info">
+              <span class="faltas-count">{{ item.faltas }} / {{ item.limiteTotal }}</span>
+              <span class="alerta" *ngIf="estaNoLimite(item.faltas, item.limiteTotal)">⚠️</span>
+            </div>
+          </div>
+          
+          <div class="progress-bg">
+            <div 
+              class="progress-fill"
+              [style.width.%]="calcularPorcentagem(item.faltas, item.limiteTotal)"
+              [style.background-color]="getCorBarra(item.faltas, item.limiteTotal)">
+            </div>
+          </div>
+          
+          <div class="porcentagem-texto">
+            {{ calcularPorcentagem(item.faltas, item.limiteTotal) }}% do limite
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEGENDA -->
+    <div class="legenda-card">
+      <div class="legenda-item">
+        <div class="cor-box" style="background: #10b981;"></div>
+        <span>Até 50%</span>
+      </div>
+      <div class="legenda-item">
+        <div class="cor-box" style="background: #f59e0b;"></div>
+        <span>50-75%</span>
+      </div>
+      <div class="legenda-item">
+        <div class="cor-box" style="background: #ef4444;"></div>
+        <span>75%+</span>
+      </div>
+    </div>
+
+  </div>
+</div>

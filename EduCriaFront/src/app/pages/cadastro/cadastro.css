@@ -163,3 +163,38 @@
   border-radius: 8px !important;
   text-align: center;
 }
+  /* ===== OLHINHO NA SENHA ===== */
+.senha-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.senha-container input {
+  width: 100%;
+  padding-right: 45px; /* espaço pro olhinho */
+}
+
+.toggle-senha {
+  position: absolute;
+top: 12px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0e3a70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  transition: color 0.3s ease;
+}
+
+.toggle-senha:hover {
+  color: #16355a;
+}
+
+.toggle-senha svg {
+  display: block;
+}
+

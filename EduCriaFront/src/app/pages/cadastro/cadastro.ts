@@ -3,26 +3,32 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../shared/auth.service';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; // ✅ import do snackbar
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.html',
   styleUrls: ['./cadastro.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule, MatSnackBarModule] // ✅ adiciona snackbar aqui
+  imports: [FormsModule, CommonModule, MatSnackBarModule]
 })
 export class Cadastro {
 
   email: string = '';
   senha: string = '';
   nome: string = '';
+  mostrarSenha: boolean = false; // ✅ adicionado
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private snackBar: MatSnackBar // ✅ injeta snackbar
-  ) { }
+    private snackBar: MatSnackBar
+  ) {}
+
+  // ✅ função pra alternar o tipo da senha
+  toggleMostrarSenha() {
+    this.mostrarSenha = !this.mostrarSenha;
+  }
 
   voltarParaLogin() {
     this.router.navigate(['/login']);
@@ -38,7 +44,7 @@ export class Cadastro {
       });
       return;
     }
-    
+
     this.authService.cadastrar(this.nome, this.email, this.senha).subscribe({
       next: () => {
         this.snackBar.open('✅ Cadastro realizado com sucesso!', 'Fechar', {

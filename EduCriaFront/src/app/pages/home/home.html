@@ -1,19 +1,34 @@
 <header class="header">
   <div class="titulo-container">
     <img src="img/chapeu.png" alt="Chapéu de formatura" class="icone-educacao">
- 
- <h1> EDUCRIA </h1>
+    <h1>EDUCRIA</h1>
     <p class="subtitulo">ponte para o futuro...</p>
-    
   </div>
-  
-</header>
-<div>
-<button (click)="irParaAtividades()" class="btn-atividades">RELATÓRIOS</button>
-<button (click)="irParaNoticias()" class="btn-noticias">NOTICIAS GERAIS</button>
-<button (click)="irParaRelatorios()" class="btn-relatorios">ATIVIDADES</button>
-<button (click)="irParaCalendario()" class="btn-calendario">CALENDARIOS</button>
-<button (click)="irParaGraficos()"  class="btn-graficos">GRÁFICOS</button>
-<button (click)="irParaJogos()" class="btn-jogos">JOGOS</button>
-</div>
 
+  <div class="buttonsHeader">
+    <div class="perfil">
+      <!-- 🔹 agora abre o menu -->
+      <button class="icone-perfil" (click)="toggleMenu()">
+        <img src="img/perfil.png" alt="Perfil">
+      </button>
+    </div>
+
+    <!-- 🔹 menu suspenso -->
+    <div class="menu-dropdown" *ngIf="menuAberto">
+      <div class="menu-header">NOME DO USUÁRIO</div>
+      <button (click)="irParaPerfil()">👤 MEU PERFIL</button>
+      <button (click)="irParaFaltas()">📊 GRÁFICO DE FALTAS</button>
+      <button (click)="irParaBoletim()">📄 ACESSAR BOLETIM</button>
+      <button (click)="sair()">🚪 SAIR</button>
+    </div>
+  </div>
+</header>
+
+<div>
+  <button (click)="irParaAtividades()" class="btn-atividades">RELATÓRIOS</button>
+  <button (click)="irParaNoticias()" class="btn-noticias">NOTICIAS GERAIS</button>
+  <button (click)="irParaRelatorios()" class="btn-relatorios">ATIVIDADES</button>
+  <button (click)="irParaCalendario()" class="btn-calendario">CALENDARIOS</button>
+  <button (click)="irParaGraficos()" class="btn-graficos">GRÁFICOS</button>
+  <button (click)="irParaJogos()" class="btn-jogos">JOGOS</button>
+</div>

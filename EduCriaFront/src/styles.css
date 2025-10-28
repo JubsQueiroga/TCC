@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+.center-snackbar {
+  background-color: #4caf50 !important; /* verde sucesso */
+  color: white !important;
+  font-weight: 500;
+  border-radius: 8px !important;
+  text-align: center;
+
+  /* 👇 força o snackbar a ficar no centro da tela */
+  position: fixed !important;
+  top: 10% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+
+  /* Evita sobreposição feia */
+  z-index: 2000 !important;
+  width: auto !important;
+  min-width: 300px;
+  max-width: 80vw;
+}
+/* Centraliza horizontalmente e ajusta visual */
+.mat-mdc-snack-bar-container.snackbar-warning {
+  background-color: #333 !important; /* fundo preto */
+  color: #fff !important;
+  display: flex !important;
+  justify-content: center !important; /* centraliza o texto */
+  text-align: center !important;
+  font-weight: 500;
+}
+
+/* --- Força o wrapper do overlay a posicionar os overlays centralizados no topo --- */
+.cdk-overlay-container .cdk-global-overlay-wrapper {
+  display: flex !important;
+  justify-content: center !important; /* centraliza horizontalmente */
+  align-items: flex-start !important;  /* posiciona no topo (não vertical-center) */
+  pointer-events: none;                 /* permite clicar normalmente na página */
+}
+
+/* Garante que o próprio overlay permita interação e mantenha o conteúdo centralizado */
+.cdk-overlay-container .cdk-global-overlay-wrapper > * {
+  pointer-events: auto;
+}
+
+/* --- Aplica estilo ao snackbar de aviso (compatível com mat / mat-mdc) --- */
+.mat-snack-bar-container.snackbar-warning,
+.mat-mdc-snack-bar-container.snackbar-warning {
+  background-color: #333 !important;
+  color: #fff !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  border-radius: 8px !important;
+  font-weight: 500;
+  margin-top: 12px; /* distancia do topo */
+  max-width: 600px; /* opcional: limita a largura do snackbar */
+  width: auto;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15) !important;
+}
+
+/* Se você tiver outro wrapper (variações de versão do Material) */
+.cdk-overlay-pane {
+  display: flex !important;
+  justify-content: center !important;
+}

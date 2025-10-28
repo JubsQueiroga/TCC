@@ -1,28 +1,42 @@
-/* Estilo geral centralizado */
+/* Estilo do componente host (centralização) */
 :host {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f8f9fa;
-  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f8f9fa, #e3e8ed);
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* Container do formulário de cadastro */
+/* Container do formulário */
 .cadastro-container {
-  background-color: white;
-  padding: 40px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 50px;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 350px;
+  box-shadow: 0 8px 24px rgba(14, 58, 112, 0.25);
+  width: 400px;
   text-align: center;
+  border: 1px solid #e9ecef;
 }
 
 /* Título */
 .cadastro-container h2 {
-  margin-bottom: 20px;
-  color: #0c2340;
-  font-size: 28px;
+  margin-bottom: 30px;
+  color: #0e3a70;
+  font-size: 36px;
+  font-weight: 800;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Labels */
+.cadastro-container label {
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  color: #0e3a70;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 /* Inputs */
@@ -30,52 +44,122 @@
 .cadastro-container input[type="email"],
 .cadastro-container input[type="password"] {
   width: 100%;
-  padding: 10px 12px;
-  margin: 10px 0;
-  border: 1px solid #ced4da;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #e9ecef;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 15px;
   box-sizing: border-box;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-/* Foco nos campos */
+/* Foco */
 .cadastro-container input:focus {
-  border-color: #0c2340;
+  border-color: #0e3a70;
   outline: none;
-  box-shadow: 0 0 5px rgba(12, 35, 64, 0.3);
+  box-shadow: 0 0 8px rgba(14, 58, 112, 0.3);
+  background-color: white;
 }
 
-/* Botão de cadastrar */
+/* Botão principal */
 .cadastro-container button[type="submit"] {
-  background-color: #0c2340;
+  background-color: #0e3a70;
   color: white;
-  padding: 10px 15px;
+  padding: 14px 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
   width: 100%;
   margin-top: 10px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .cadastro-container button[type="submit"]:hover {
-  background-color: #12284f;
+  background-color: #16355a;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.cadastro-container button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Mensagem de erro */
+.cadastro-container p[style] {
+  margin-top: 15px;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #ffe5e8;
+  color: #dc3545;
 }
 
 /* Texto e botão de login */
 .cadastro-container .login-texto {
   text-align: center;
-  margin-top: 20px;
-  font-size: 16px;
+  margin-top: 25px;
+  font-size: 15px;
+  color: #2c3e50;
 }
 
 .cadastro-container .login-texto button {
   background: none;
   border: none;
-  color: #0c2340;
+  color: #0e3a70;
   cursor: pointer;
   text-decoration: underline;
   font-size: 15px;
   margin-top: 8px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cadastro-container .login-texto button:hover {
+  color: #16355a;
+}
+
+/* Subtítulo opcional */
+.cadastro-subtitle {
+  font-size: 14px;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  font-style: italic;
+  color: #03040588;
+  text-transform: lowercase;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* 🔔 Estilos dos Snackbars */
+.warning-snackbar {
+  background-color: #ffe5e8 !important;
+  color: #dc3545 !important;
+  font-weight: 600;
+  border-radius: 8px !important;
+  text-align: center;
+}
+
+.center-snackbar {
+  background-color: #d4edda !important;
+  color: #155724 !important;
+  font-weight: 600;
+  border-radius: 8px !important;
+  text-align: center;
+}
+
+.snackbar-warning {
+  background-color: #fff3cd !important;
+  color: #856404 !important;
+  font-weight: 600;
+  border-radius: 8px !important;
+  text-align: center;
 }

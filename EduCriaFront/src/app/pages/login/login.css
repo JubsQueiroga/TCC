@@ -1,86 +1,186 @@
-/* Estilo do componente host (centralização) */
+/* ===== Estilo principal ===== */
 :host {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f8f9fa;
-  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f8f9fa, #e3e8ed);
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* Container do formulário */
+/* ===== Container do formulário ===== */
 .login-container {
-  background-color: white;
-  padding: 40px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 50px;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 350px;
+  box-shadow: 0 8px 24px rgba(14, 58, 112, 0.25);
+  width: 400px;
   text-align: center;
+  border: 1px solid #e9ecef;
 }
 
-/* Título */
+/* ===== Título ===== */
 .login-container h2 {
-  margin-bottom: 20px;
-  color: #0c2340;
-  font-size: 28px;
+  margin-bottom: 30px;
+  color: #0e3a70;
+  font-size: 36px;
+  font-weight: 800;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Inputs */
+/* ===== Labels ===== */
+.login-container label {
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+  color: #0e3a70;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* ===== Inputs ===== */
 .login-container input[type="email"],
-.login-container input[type="password"] {
+.login-container input[type="password"],
+.login-container input[type="text"] {
   width: 100%;
-  padding: 10px 12px;
-  margin: 10px 0;
-  border: 1px solid #ced4da;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #e9ecef;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 15px;
   box-sizing: border-box;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-/* Foco */
+/* ===== Campo de senha com ícone de olho ===== */
+.senha-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.senha-container input {
+  width: 100%;
+  padding-right: 40px; /* espaço pro botão de olho */
+}
+
+.toggle-senha {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.toggle-senha:hover {
+  color: #0e3a70;
+}
+
+/* ===== Foco ===== */
 .login-container input:focus {
-  border-color: #0c2340;
+  border-color: #0e3a70;
   outline: none;
-  box-shadow: 0 0 5px rgba(12, 35, 64, 0.3);
+  box-shadow: 0 0 8px rgba(14, 58, 112, 0.3);
+  background-color: white;
 }
 
-/* Botão principal */
-.login-container button[type="submit"] {
-  background-color: #0c2340;
+/* ===== Botão principal ===== */
+.login-container button[type='submit'] {
+  background-color: #0e3a70;
   color: white;
-  padding: 10px 15px;
+  padding: 14px 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
   width: 100%;
   margin-top: 10px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.login-container button[type="submit"]:hover {
-  background-color: #12284f;
+.login-container button[type='submit']:hover {
+  background-color: #16355a;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Mensagem de erro */
-.login-container p[style] {
-  margin-top: 10px;
+.login-container button[type='submit']:active {
+  transform: translateY(0);
+}
+
+/* ===== Mensagem de erro ===== */
+.erro {
+  margin-top: 15px;
   font-size: 14px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #ffe5e8;
+  color: #dc3545;
 }
 
-/* Texto e botão de cadastro centralizados */
+/* ===== Texto e botão de cadastro ===== */
 .login-container .cadastro-texto {
   text-align: center;
-  margin-top: 20px;
-  font-size: 16px;
+  margin-top: 25px;
+  font-size: 15px;
+  color: #2c3e50;
 }
 
 .login-container .cadastro-texto button {
   background: none;
   border: none;
-  color: #0c2340;
+  color: #0e3a70;
   cursor: pointer;
   text-decoration: underline;
   font-size: 15px;
   margin-top: 8px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.login-container .cadastro-texto button:hover {
+  color: #16355a;
+}
+
+/* ===== Subtítulo opcional ===== */
+.login-subtitle {
+  font-size: 14px;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  font-style: italic;
+  color: #03040588;
+  text-transform: lowercase;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* ===== Responsividade leve ===== */
+@media (max-width: 450px) {
+  .login-container {
+    width: 90%;
+    padding: 35px;
+  }
+
+  .login-container h2 {
+    font-size: 28px;
+  }
+
+  .login-container button[type='submit'] {
+    font-size: 16px;
+  }
 }

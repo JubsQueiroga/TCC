@@ -1,200 +1,249 @@
-/* Estilo do componente host (centralização) */
-:host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa, #e3e8ed);
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-/* Container do formulário */
+/* Layout principal */
 .cadastro-container {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  padding: 50px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(14, 58, 112, 0.25);
-  width: 400px;
+  display: flex;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== LADO ESQUERDO ===== */
+.left-side {
+  flex: 1;
+  background: linear-gradient(135deg, #0a2540 0%, #1a4d7a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 40px;
+}
+
+/* Logo e slogan */
+.logo-header {
   text-align: center;
-  border: 1px solid #e9ecef;
+  margin-bottom: 20px;
 }
 
-/* Título */
-.cadastro-container h2 {
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  font-size: 32px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #cfe2f3;
+}
+
+/* Conteúdo do formulário */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.welcome-title {
+  text-align: center;
   margin-bottom: 30px;
-  color: #0e3a70;
-  font-size: 36px;
-  font-weight: 800;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Labels */
-.cadastro-container label {
-  display: block;
-  text-align: left;
-  margin-bottom: 8px;
-  color: #0e3a70;
-  font-weight: 600;
-  font-size: 15px;
+.welcome-title h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.welcome-title p {
+  font-size: 16px;
+  color: #cfe2f3;
 }
 
 /* Inputs */
-.cadastro-container input[type="text"],
-.cadastro-container input[type="email"],
-.cadastro-container input[type="password"] {
-  width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 20px;
-  border: 2px solid #e9ecef;
-  border-radius: 6px;
-  font-size: 15px;
-  box-sizing: border-box;
-  background-color: #f8f9fa;
-  transition: all 0.3s ease;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-/* Foco */
-.cadastro-container input:focus {
-  border-color: #0e3a70;
-  outline: none;
-  box-shadow: 0 0 8px rgba(14, 58, 112, 0.3);
-  background-color: white;
-}
-
-/* Botão principal */
-.cadastro-container button[type="submit"] {
-  background-color: #0e3a70;
-  color: white;
-  padding: 14px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 600;
-  width: 100%;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.cadastro-container button[type="submit"]:hover {
-  background-color: #16355a;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-.cadastro-container button[type="submit"]:active {
-  transform: translateY(0);
-}
-
-/* Mensagem de erro */
-.cadastro-container p[style] {
-  margin-top: 15px;
-  font-size: 14px;
-  padding: 10px;
-  border-radius: 4px;
-  background-color: #ffe5e8;
-  color: #dc3545;
-}
-
-/* Texto e botão de login */
-.cadastro-container .login-texto {
-  text-align: center;
-  margin-top: 25px;
-  font-size: 15px;
-  color: #2c3e50;
-}
-
-.cadastro-container .login-texto button {
-  background: none;
-  border: none;
-  color: #0e3a70;
-  cursor: pointer;
-  text-decoration: underline;
-  font-size: 15px;
-  margin-top: 8px;
-  font-weight: 600;
-  transition: color 0.3s ease;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.cadastro-container .login-texto button:hover {
-  color: #16355a;
-}
-
-/* Subtítulo opcional */
-.cadastro-subtitle {
-  font-size: 14px;
-  margin-top: -20px;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-  font-style: italic;
-  color: #03040588;
-  text-transform: lowercase;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-/* 🔔 Estilos dos Snackbars */
-.warning-snackbar {
-  background-color: #ffe5e8 !important;
-  color: #dc3545 !important;
-  font-weight: 600;
-  border-radius: 8px !important;
-  text-align: center;
-}
-
-.center-snackbar {
-  background-color: #d4edda !important;
-  color: #155724 !important;
-  font-weight: 600;
-  border-radius: 8px !important;
-  text-align: center;
-}
-
-.snackbar-warning {
-  background-color: #fff3cd !important;
-  color: #856404 !important;
-  font-weight: 600;
-  border-radius: 8px !important;
-  text-align: center;
-}
-  /* ===== OLHINHO NA SENHA ===== */
-.senha-container {
+.input-group {
   position: relative;
   display: flex;
   align-items: center;
+  background: #e6efff;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
 }
 
-.senha-container input {
-  width: 100%;
-  padding-right: 45px; /* espaço pro olhinho */
-}
-
-.toggle-senha {
-  position: absolute;
-top: 12px;
-  right: 10px;
-  background: none;
+.input-group input {
+  flex: 1;
   border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+}
+
+.input-group .material-icons {
+  color: #666;
+  margin-right: 10px;
+}
+
+.toggle-visibility {
   cursor: pointer;
-  color: #0e3a70;
+  color: #666;
+}
+
+/* Botão de cadastrar */
+.login-button {
+  width: 100%;
+  background: #00b377;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 4px 12px rgba(0, 179, 119, 0.4);
+}
+
+.login-button:hover {
+  background: #00a36c;
+}
+
+/* Texto de login */
+.register-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.register-link {
+  color: white;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ===== LADO DIREITO ===== */
+.right-side {
+  flex: 1;
+  background: #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2px;
-  transition: color 0.3s ease;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
 }
 
-.toggle-senha:hover {
-  color: #16355a;
+.illustration-container {
+  max-width: 500px;
+  position: relative;
 }
 
-.toggle-senha svg {
-  display: block;
+.paper-plane {
+  position: absolute;
+  top: -50px;
+  right: 100px;
+  width: 40px;
+  height: 40px;
+  color: #0a2540;
+  animation: float 3s ease-in-out infinite;
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.phone-mockup {
+  background: linear-gradient(135deg, #0a2540 0%, #1a4d7a 100%);
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  margin: 0 auto 40px;
+  width: 280px;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar svg {
+  width: 50px;
+  height: 50px;
+  color: #0a2540;
+}
+
+.password-dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.line {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  margin: 10px 0;
+}
+
+.welcome-text {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.welcome-text h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle1 {
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  right: 50px;
+  background: rgba(10, 37, 64, 0.1);
+}
+
+.circle2 {
+  width: 80px;
+  height: 80px;
+  bottom: 100px;
+  left: 50px;
+  background: rgba(16, 185, 129, 0.1);
+}

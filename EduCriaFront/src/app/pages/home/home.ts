@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   selector: 'app-home',
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
-  imports: [Menu, Footer, CommonModule],
+  imports: [CommonModule],
   standalone: true,
 })
 export class Home {

@@ -41,7 +41,6 @@
         <div class="input-group">
           <span class="material-icons">lock</span>
           <input
-            [type]="mostrarSenha ? 'text' : 'password'"
             name="senha"
             [(ngModel)]="senha"
             placeholder="Senha"
@@ -49,9 +48,7 @@
           />
           <span
             class="material-icons toggle-visibility"
-            (click)="toggleMostrarSenha()"
           >
-            {{ mostrarSenha ? 'visibility_off' : 'visibility' }}
           </span>
         </div>
 

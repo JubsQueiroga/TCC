@@ -1,13 +1,8 @@
 
 .container {
   min-height: 100vh;
-<<<<<<< HEAD
   background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
   padding: 24px;
-=======
-  background-color: #f5f5f5;
-  padding: 40px 20px;
->>>>>>> educria
 }
 
 .content {
@@ -15,7 +10,6 @@
   margin: 0 auto;
 }
 
-<<<<<<< HEAD
 .card {
   background: white;
   border-radius: 12px;
@@ -65,58 +59,13 @@
 
 .grafico {
   width: 100%;
-=======
-.total-card {
-  background: linear-gradient(135deg, #1e4a7a 0%, #2d5a8a 100%);
-  border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 12px rgba(30, 74, 122, 0.3);
-}
-
-.total-info h3 {
-  color: white;
-  font-size: 18px;
-  font-weight: normal;
-  margin-bottom: 10px;
-}
-
-.total-numero {
-  color: white;
-  font-size: 56px;
-  font-weight: bold;
-}
-
-.grafico-card, .detalhes-card {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.titulo {
-  color: #1e4a7a;
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
-
-.grafico-area {
->>>>>>> educria
   overflow-x: auto;
 }
 
 .grafico-container {
   display: flex;
-<<<<<<< HEAD
   gap: 16px;
   min-height: 350px;
-=======
-  gap: 20px;
-  min-height: 320px;
-  min-width: 600px;
->>>>>>> educria
 }
 
 .eixo-y {
@@ -124,18 +73,12 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 20px 0;
-<<<<<<< HEAD
   color: #6b7280;
   font-size: 12px;
-=======
-  color: #888;
-  font-size: 13px;
->>>>>>> educria
 }
 
 .barras {
   display: flex;
-<<<<<<< HEAD
   gap: 24px;
   flex: 1;
   align-items: flex-end;
@@ -151,54 +94,26 @@
   align-items: center;
   flex: 1;
   min-width: 60px;
-=======
-  gap: 20px;
-  flex: 1;
-  align-items: flex-end;
-  padding-bottom: 50px;
-  border-bottom: 2px solid #1e4a7a;
-  border-left: 2px solid #1e4a7a;
-}
-
-.barra-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
->>>>>>> educria
 }
 
 .barra-wrapper {
   width: 100%;
-<<<<<<< HEAD
   height: 280px;
-=======
-  height: 250px;
->>>>>>> educria
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 
-<<<<<<< HEAD
 .barra {
   width: 80%;
   border-radius: 8px 8px 0 0;
   transition: all 0.3s ease;
   position: relative;
   min-height: 10px;
-=======
-.barra-coluna {
-  width: 70%;
-  border-radius: 8px 8px 0 0;
-  transition: all 0.3s;
-  min-height: 15px;
->>>>>>> educria
   display: flex;
   align-items: flex-start;
   justify-content: center;
   padding-top: 8px;
-<<<<<<< HEAD
 }
 
 .barra:hover {
@@ -240,46 +155,6 @@
 
 .lista-item:hover {
   background-color: #f9fafb;
-=======
-  cursor: pointer;
-}
-
-.barra-coluna:hover {
-  opacity: 0.85;
-  transform: translateY(-3px);
-}
-
-.barra-valor {
-  color: white;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.barra-label {
-  margin-top: 10px;
-  font-size: 13px;
-  color: #555;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.lista {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.lista-item {
-  border: 1px solid #e5e5e5;
-  border-radius: 10px;
-  padding: 18px;
-  transition: all 0.2s;
-}
-
-.lista-item:hover {
-  background: #f8f9fa;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
->>>>>>> educria
 }
 
 .item-header {
@@ -291,11 +166,7 @@
 
 .materia-nome {
   font-weight: 600;
-<<<<<<< HEAD
   color: #1f2937;
-=======
-  color: #1e4a7a;
->>>>>>> educria
   font-size: 16px;
 }
 
@@ -306,34 +177,21 @@
 }
 
 .faltas-count {
-<<<<<<< HEAD
   color: #6b7280;
-=======
-  color: #666;
-  font-size: 14px;
->>>>>>> educria
 }
 
 .alerta {
   font-size: 18px;
 }
 
-<<<<<<< HEAD
 .progress-bar-bg {
   width: 100%;
   height: 8px;
   background-color: #e5e7eb;
-=======
-.progress-bg {
-  width: 100%;
-  height: 10px;
-  background: #e5e5e5;
->>>>>>> educria
   border-radius: 999px;
   overflow: hidden;
 }
 
-<<<<<<< HEAD
 .progress-bar-fill {
   height: 100%;
   border-radius: 999px;
@@ -353,35 +211,11 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 16px;
-=======
-.progress-fill {
-  height: 100%;
-  border-radius: 999px;
-  transition: width 0.4s ease;
-}
-
-.porcentagem-texto {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #888;
-}
-
-.legenda-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
->>>>>>> educria
 }
 
 .legenda-item {
   display: flex;
   align-items: center;
-<<<<<<< HEAD
   gap: 8px;
   font-size: 14px;
   color: #6b7280;
@@ -411,21 +245,3 @@
     min-width: 40px;
   }
 }
-=======
-  gap: 10px;
-  font-size: 14px;
-  color: #666;
-}
-
-.cor-box {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-}
-
-@media (max-width: 768px) {
-  .barra-label {
-    font-size: 11px;
-  }
-}
->>>>>>> educria

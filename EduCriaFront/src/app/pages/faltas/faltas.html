@@ -2,7 +2,6 @@
 <div class="container">
   <div class="content">
     
-<<<<<<< HEAD
     <!-- SEÇÃO 1: CABEÇALHO -->
     <div class="card header-card">
       <h1 class="title">Controle de Faltas</h1>
@@ -30,35 +29,10 @@
           </div>
 
           <!-- Barras -->
-=======
-    <!-- CARD TOTAL -->
-    <div class="total-card">
-      <div class="total-info">
-        <h3>Total de Faltas no Bimestre</h3>
-        <div class="total-numero">{{ totalFaltas }}</div>
-      </div>
-    </div>
-
-    <!-- CARD GRÁFICO -->
-    <div class="grafico-card">
-      <h2 class="titulo">Faltas por Matéria</h2>
-      
-      <div class="grafico-area">
-        <div class="grafico-container">
-          <div class="eixo-y">
-            <span>{{ maxFaltas }}</span>
-            <span>{{ (maxFaltas * 0.75).toFixed(0) }}</span>
-            <span>{{ (maxFaltas * 0.5).toFixed(0) }}</span>
-            <span>{{ (maxFaltas * 0.25).toFixed(0) }}</span>
-            <span>0</span>
-          </div>
-
->>>>>>> educria
           <div class="barras">
             <div class="barra-item" *ngFor="let item of dados">
               <div class="barra-wrapper">
                 <div 
-<<<<<<< HEAD
                   class="barra"
                   [style.height.%]="(item.faltas / maxFaltas) * 100"
                   [style.background-color]="getCorBarra(item.faltas, item.limiteTotal)">
@@ -66,22 +40,12 @@
                 </div>
               </div>
               <span class="label-barra">{{ item.materia }}</span>
-=======
-                  class="barra-coluna"
-                  [style.height.%]="(item.faltas / maxFaltas) * 100"
-                  [style.background-color]="getCorBarra(item.faltas, item.limiteTotal)">
-                  <span class="barra-valor">{{ item.faltas }}</span>
-                </div>
-              </div>
-              <span class="barra-label">{{ item.materia }}</span>
->>>>>>> educria
             </div>
           </div>
         </div>
       </div>
     </div>
 
-<<<<<<< HEAD
     <!-- SEÇÃO 3: LISTA DETALHADA -->
     <div class="card">
       <h2 class="section-title">Detalhes por Matéria</h2>
@@ -94,51 +58,27 @@
             <span class="materia-nome">{{ item.materia }}</span>
             <div class="item-info">
               <span class="faltas-count">{{ item.faltas }} / {{ item.limiteTotal }} faltas</span>
-=======
-    <!-- CARD DETALHES -->
-    <div class="detalhes-card">
-      <h2 class="titulo">Detalhes por Matéria</h2>
-      
-      <div class="lista">
-        <div class="lista-item" *ngFor="let item of dados">
-          <div class="item-header">
-            <span class="materia-nome">{{ item.materia }}</span>
-            <div class="item-info">
-              <span class="faltas-count">{{ item.faltas }} / {{ item.limiteTotal }}</span>
->>>>>>> educria
               <span class="alerta" *ngIf="estaNoLimite(item.faltas, item.limiteTotal)">⚠️</span>
             </div>
           </div>
           
-<<<<<<< HEAD
           <!-- Barra de progresso -->
           <div class="progress-bar-bg">
             <div 
               class="progress-bar-fill"
-=======
-          <div class="progress-bg">
-            <div 
-              class="progress-fill"
->>>>>>> educria
               [style.width.%]="calcularPorcentagem(item.faltas, item.limiteTotal)"
               [style.background-color]="getCorBarra(item.faltas, item.limiteTotal)">
             </div>
           </div>
           
-<<<<<<< HEAD
           <!-- Porcentagem -->
           <div class="porcentagem">
             {{ calcularPorcentagem(item.faltas, item.limiteTotal) }}% do limite utilizado
-=======
-          <div class="porcentagem-texto">
-            {{ calcularPorcentagem(item.faltas, item.limiteTotal) }}% do limite
->>>>>>> educria
           </div>
         </div>
       </div>
     </div>
 
-<<<<<<< HEAD
     <!-- SEÇÃO 4: LEGENDA -->
     <div class="card legenda">
       <div class="legenda-item">
@@ -152,28 +92,10 @@
       <div class="legenda-item">
         <div class="cor-box" style="background-color: #ef4444;"></div>
         <span>75%+ (Risco)</span>
-=======
-    <!-- LEGENDA -->
-    <div class="legenda-card">
-      <div class="legenda-item">
-        <div class="cor-box" style="background: #10b981;"></div>
-        <span>Até 50%</span>
-      </div>
-      <div class="legenda-item">
-        <div class="cor-box" style="background: #f59e0b;"></div>
-        <span>50-75%</span>
-      </div>
-      <div class="legenda-item">
-        <div class="cor-box" style="background: #ef4444;"></div>
-        <span>75%+</span>
->>>>>>> educria
       </div>
     </div>
 
   </div>
 </div>
-<<<<<<< HEAD
 
 */
-=======
->>>>>>> educria

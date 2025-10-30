@@ -2,108 +2,91 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Menu } from '../../shared/menu/menu';
 import { Footer } from '../../shared/footer/footer';
-<<<<<<< HEAD
-import { NgIf } from '@angular/common'; // ADICIONE ESTA LINHA
-
-=======
-import { NgIf } from '@angular/common';
-import { AuthService } from '../../shared/auth.service'; // 🔹 Mantido do código antigo
->>>>>>> educria
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../shared/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
-  templateUrl:'./home.html',
+  templateUrl: './home.html',
   styleUrls: ['./home.css'],
-<<<<<<< HEAD
- imports: [Menu, Footer, NgIf], // ADICIONE NgIf AQUI
-  standalone: true,
-})
-export class Home{
-   menuAberto = false; // ADICIONE ESTA LINHA
-
-  constructor(private router: Router) {}
- toggleMenu() {
-    this.menuAberto = !this.menuAberto;
- }
-=======
-  imports: [Menu, Footer, NgIf],
+  imports: [Menu, Footer, CommonModule],
   standalone: true,
 })
 export class Home {
   menuAberto = false;
+  nomeUsuario: string = '';
 
   constructor(
     private router: Router,
-    private authService: AuthService // 🔹 Reintroduzido do código antigo
-  ) {}
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {
+    this.nomeUsuario = this.authService.getNomeUsuario();
+  }
 
-  toggleMenu() {
+  toggleMenu(): void {
     this.menuAberto = !this.menuAberto;
   }
->>>>>>> educria
 
-  irParaSobre() {
-    this.router.navigate(['/sobre']);
+  sair(): void {
+    // 🔹 Mostra confirmação com Snackbar
+    const snackBarRef = this.snackBar.open('Deseja realmente sair?', 'SIM', {
+      duration: 5000,
+      panelClass: ['snackbar-warning'],
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
+
+    // 🔹 Se clicar em "SIM"
+    snackBarRef.onAction().subscribe(() => {
+      this.menuAberto = false;
+      this.authService.logout();
+      this.snackBar.open('👋 Até logo!', '', {
+        duration: 2000,
+        panelClass: ['center-snackbar'],
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
+    });
   }
-  irParaAtividades() {
+
+  irParaPerfil(): void {
+    this.menuAberto = false;
+    this.router.navigate(['/perfil']);
+  }
+
+  irParaBoletim(): void {
+    this.menuAberto = false;
+    this.router.navigate(['/boletim']);
+  }
+
+  irParaFaltas(): void {
+    this.menuAberto = false;
+    this.router.navigate(['/faltas']);
+  }
+
+  irParaAtividades(): void {
     this.router.navigate(['/atividades']);
   }
-  irParaNoticias() {
+
+  irParaNoticias(): void {
     this.router.navigate(['/noticias']);
   }
-  irParaRelatorios() {
+
+  irParaRelatorios(): void {
     this.router.navigate(['/relatorios']);
   }
-  irParaCalendario() {
+
+  irParaCalendario(): void {
     this.router.navigate(['/calendario']);
   }
-  irParaGraficos() {
+
+  irParaGraficos(): void {
     this.router.navigate(['/graficos']);
   }
-  irParaJogos() {
+
+  irParaJogos(): void {
     this.router.navigate(['/jogos']);
   }
-<<<<<<< HEAD
-  irParaPerfil() {
-     this.menuAberto = false; 
-    this.router.navigate(['/perfil']);
-  }
-  irParaBoletim() {
-     this.menuAberto = false; 
-    this.router.navigate(['/boletim']);
-  }
-  irParaFaltas() {
-     this.menuAberto = false; 
-    this.router.navigate(['/faltas']);
-  }
-  // ADICIONE ESTA FUNÇÃO
-  sair() {
-    this.menuAberto = false;
-    this.router.navigate(['/login']);
-  }
 }
-=======
-
-  irParaPerfil() {
-    this.menuAberto = false;
-    this.router.navigate(['/perfil']);
-  }
-
-  irParaBoletim() {
-    this.menuAberto = false;
-    this.router.navigate(['/boletim']);
-  }
-
-  irParaFaltas() {
-    this.menuAberto = false;
-    this.router.navigate(['/faltas']);
-  }
-
-  // 🔹 Alterado: logout agora usa AuthService para encerrar sessão
-  sair(): void {
-    this.menuAberto = false;
-    this.authService.logout(); // 🔹 Login contínuo garantido
-    this.router.navigate(['/login']);
-  }
-}
->>>>>>> educria

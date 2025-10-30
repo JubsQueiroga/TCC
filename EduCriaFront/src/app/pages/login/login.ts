@@ -9,7 +9,7 @@ import { AuthService } from '../../shared/auth.service';
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
   standalone: true,
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule],
 })
 export class Login {
   email: string = '';

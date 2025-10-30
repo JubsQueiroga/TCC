@@ -1,103 +1,93 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { AuthService } from '../../shared/auth.service';
-<<<<<<< HEAD
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; // ✅ import do snackbar
-=======
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
->>>>>>> educria
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.html',
   styleUrls: ['./cadastro.css'],
   standalone: true,
-<<<<<<< HEAD
-  imports: [FormsModule, CommonModule, MatSnackBarModule] // ✅ adiciona snackbar aqui
-=======
-  imports: [FormsModule, CommonModule, MatSnackBarModule]
->>>>>>> educria
+  imports: [CommonModule, FormsModule]
 })
 export class Cadastro {
-
+  nome: string = '';
   email: string = '';
   senha: string = '';
-  nome: string = '';
-  mostrarSenha: boolean = false; // ✅ adicionado
+  confirmarSenha: string = '';
+  mostrarSenha = false;
 
   constructor(
-    private router: Router,
     private authService: AuthService,
-<<<<<<< HEAD
-    private snackBar: MatSnackBar // ✅ injeta snackbar
-  ) { }
-=======
+    private router: Router,
     private snackBar: MatSnackBar
   ) {}
 
-  // ✅ função pra alternar o tipo da senha
-  toggleMostrarSenha() {
-    this.mostrarSenha = !this.mostrarSenha;
-  }
->>>>>>> educria
-
-  voltarParaLogin() {
-    this.router.navigate(['/login']);
-  }
-
-  fazerCadastro() {
-    if (!this.nome || !this.email || !this.senha) {
+  cadastrar(): void {
+    // Validação de campos vazios
+    if (!this.nome || !this.email || !this.senha || !this.confirmarSenha) {
       this.snackBar.open('⚠️ Preencha todos os campos!', 'Fechar', {
         duration: 3000,
-        horizontalPosition: 'right',
-        verticalPosition: 'top',
-        panelClass: ['warning-snackbar']
+        panelClass: ['snackbar-warning'],
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
       });
       return;
     }
 
+    // Validação de senhas diferentes
+    if (this.senha !== this.confirmarSenha) {
+      this.snackBar.open('❌ As senhas não conferem!', 'Fechar', {
+        duration: 3000,
+        panelClass: ['snackbar-warning'],
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      });
+      return;
+    }
+
+    // Chama o serviço de cadastro
     this.authService.cadastrar(this.nome, this.email, this.senha).subscribe({
-      next: () => {
-        this.snackBar.open('✅ Cadastro realizado com sucesso!', 'Fechar', {
-          duration: 7000,
+      next: (response) => {
+        this.snackBar.open('✅ Cadastro realizado com sucesso!', 'OK', {
+          duration: 3000,
+          panelClass: ['center-snackbar'],
           horizontalPosition: 'center',
-          verticalPosition: 'top',
-          panelClass: ['center-snackbar']
+          verticalPosition: 'top'
         });
-        this.router.navigate(['/login']);
+        
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 1500);
       },
       error: (err) => {
-<<<<<<< HEAD
-        this.snackBar.open('❌ Erro ao cadastrar: ' + err.message, 'Fechar', {
-          duration: 7000,
-=======
-        let mensagemErro = '❌ Ocorreu um erro ao cadastrar. Tente novamente.';
-
+        console.error('Erro ao cadastrar:', err);
+        
+        // 🔹 Verifica se é erro 400 (email duplicado)
         if (err.status === 400) {
-          mensagemErro = '⚠️ Este e-mail já está cadastrado!';
-        } else if (err.status === 0) {
-          mensagemErro = '⚠️ Não foi possível conectar ao servidor.';
+          this.snackBar.open('❌ Esse email já está cadastrado', 'Fechar', {
+            duration: 4000,
+            panelClass: ['snackbar-warning'],
+            horizontalPosition: 'center',
+            verticalPosition: 'top'
+          });
+        } 
+        // 🔹 Outros erros
+        else {
+          this.snackBar.open('❌ Erro ao cadastrar. Tente novamente!', 'Fechar', {
+            duration: 3000,
+            panelClass: ['snackbar-warning'],
+            horizontalPosition: 'center',
+            verticalPosition: 'top'
+          });
         }
-
-        this.snackBar.open(mensagemErro, 'Fechar', {
-          duration: 4000,
->>>>>>> educria
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-          panelClass: ['snackbar-warning']
-        });
       }
     });
-    if (!this.email.endsWith('@gmail.com')) {
-  this.snackBar.open('⚠️ Apenas emails @gmail.com são permitidos!', 'Fechar', {
-    duration: 3000,
-    horizontalPosition: 'right',
-    verticalPosition: 'top',
-    panelClass: ['warning-snackbar']
-  });
-  return;
-}
-}
+  }
+
+  toggleMostrarSenha(): void {
+    this.mostrarSenha = !this.mostrarSenha;
+  }
 }

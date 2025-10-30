@@ -1,85 +1,258 @@
-/* Estilo geral centralizado */
-:host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f8f9fa;
-  font-family: 'Arial', sans-serif;
-}
-
-/* Container do formulário de cadastro */
+/* Layout principal */
 .cadastro-container {
-  background-color: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 350px;
-  text-align: center;
+  display: flex;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Título */
-.cadastro-container h2 {
+/* ===== LADO ESQUERDO ===== */
+.left-side {
+  flex: 1;
+  background: linear-gradient(135deg, #0a2540 0%, #1a4d7a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 40px;
+}
+
+/* Logo e slogan */
+.logo-header {
+  text-align: center;
   margin-bottom: 20px;
-  color: #0c2340;
-  font-size: 28px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  font-size: 32px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #cfe2f3;
+}
+
+/* Conteúdo do formulário */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.welcome-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.welcome-title h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.welcome-title p {
+  font-size: 16px;
+  color: #cfe2f3;
 }
 
 /* Inputs */
-.cadastro-container input[type="text"],
-.cadastro-container input[type="email"],
-.cadastro-container input[type="password"] {
-  width: 100%;
-  padding: 10px 12px;
-  margin: 10px 0;
-  border: 1px solid #ced4da;
-  border-radius: 6px;
-  font-size: 14px;
-  box-sizing: border-box;
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #e6efff;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
 }
 
-/* Foco nos campos */
-.cadastro-container input:focus {
-  border-color: #0c2340;
+.input-group input {
+  flex: 1;
+  border: none;
+  background: transparent;
   outline: none;
-  box-shadow: 0 0 5px rgba(12, 35, 64, 0.3);
+  font-size: 14px;
+  color: #333;
+}
+
+.input-group .material-icons {
+  color: #666;
+  margin-right: 10px;
+}
+
+.toggle-visibility {
+  cursor: pointer;
+  color: #666;
 }
 
 /* Botão de cadastrar */
-.cadastro-container button[type="submit"] {
-  background-color: #0c2340;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
+.login-button {
   width: 100%;
-  margin-top: 10px;
-  transition: background-color 0.3s;
+  background: #00b377;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 4px 12px rgba(0, 179, 119, 0.4);
 }
 
-.cadastro-container button[type="submit"]:hover {
-  background-color: #12284f;
+.login-button:hover {
+  background: #00a36c;
 }
 
-/* Texto e botão de login */
-.cadastro-container .login-texto {
+/* Texto de login */
+.register-text {
   text-align: center;
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-.cadastro-container .login-texto button {
-  background: none;
-  border: none;
-  color: #0c2340;
-  cursor: pointer;
+.register-link {
+  color: white;
+  font-weight: 600;
   text-decoration: underline;
+<<<<<<< HEAD
   font-size: 15px;
   margin-top: 8px;
 }
 .mat-mdc-snack-bar-container.snackbar-warning {
   bottom: 50% !important;
   transform: translate(-50%, 50%) !important;
+=======
+}
+
+/* ===== LADO DIREITO ===== */
+.right-side {
+  flex: 1;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.illustration-container {
+  max-width: 500px;
+  position: relative;
+}
+
+.paper-plane {
+  position: absolute;
+  top: -50px;
+  right: 100px;
+  width: 40px;
+  height: 40px;
+  color: #0a2540;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.phone-mockup {
+  background: linear-gradient(135deg, #0a2540 0%, #1a4d7a 100%);
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  margin: 0 auto 40px;
+  width: 280px;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar svg {
+  width: 50px;
+  height: 50px;
+  color: #0a2540;
+}
+
+.password-dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.line {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  margin: 10px 0;
+}
+
+.welcome-text {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.welcome-text h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle1 {
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  right: 50px;
+  background: rgba(10, 37, 64, 0.1);
+}
+
+.circle2 {
+  width: 80px;
+  height: 80px;
+  bottom: 100px;
+  left: 50px;
+  background: rgba(16, 185, 129, 0.1);
+>>>>>>> educria
 }

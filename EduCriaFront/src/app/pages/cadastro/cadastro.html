@@ -1,23 +1,112 @@
 <div class="cadastro-container">
-  <h2>Cadastro</h2>
+  <!-- Lado Esquerdo - Formulário -->
+  <div class="left-side">
+    <div class="logo-header">
+      <div class="logo-container">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">EDUCRIA</div>
+      </div>
+      <div class="tagline">Ponte para o futuro</div>
+    </div>
 
-  <form (ngSubmit)="fazerCadastro()">
-    <label>Nome:</label>
-    <input type="text" name="nome" [(ngModel)]="nome" required><br><br>
+    <div class="form-container">
+      <div class="welcome-title">
+        <h1>Crie sua conta</h1>
+        <p>Preencha os campos para se cadastrar</p>
+      </div>
 
-    <label>Email:</label>
-    <input type="email" name="email" [(ngModel)]="email" required><br><br>
+      <form (ngSubmit)="fazerCadastro()">
+        <div class="input-group">
+          <span class="material-icons">person</span>
+          <input
+            type="text"
+            name="nome"
+            [(ngModel)]="nome"
+            placeholder="Nome completo"
+            required
+          />
+        </div>
 
-    <label>Senha:</label>
-    <input type="password" name="senha" [(ngModel)]="senha" required><br><br>
+        <div class="input-group">
+          <span class="material-icons">mail</span>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="Email"
+            required
+          />
+        </div>
 
-    <button type="submit">Cadastrar</button>
-  </form>
+        <div class="input-group">
+          <span class="material-icons">lock</span>
+          <input
+            [type]="mostrarSenha ? 'text' : 'password'"
+            name="senha"
+            [(ngModel)]="senha"
+            placeholder="Senha"
+            required
+          />
+          <span
+            class="material-icons toggle-visibility"
+            (click)="toggleMostrarSenha()"
+          >
+            {{ mostrarSenha ? 'visibility_off' : 'visibility' }}
+          </span>
+        </div>
 
-  <!-- Texto centralizado com botão abaixo -->
-  <p class="login-texto">
-    Já tem conta?
-    <br />
-    <button type="button" (click)="voltarParaLogin()">Fazer login</button>
-  </p>
+        <button type="submit" class="login-button">CADASTRAR</button>
+
+        <p class="register-text">
+          Já tem conta?
+          <a href="login" class="register-link">Fazer login</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lado Direito - Ilustração -->
+  <div class="right-side">
+    <div class="decorative-circle circle1"></div>
+    <div class="decorative-circle circle2"></div>
+
+    <div class="illustration-container">
+      <div class="paper-plane">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+        </svg>
+      </div>
+
+      <div class="phone-mockup">
+        <div class="user-avatar">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </div>
+
+        <div class="password-dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+
+        <div class="line" style="width: 100%"></div>
+        <div class="line" style="width: 75%"></div>
+      </div>
+
+      <div class="welcome-text">
+        <h2>Junte-se a nós!</h2>
+        <p>Crie sua conta e comece sua jornada de aprendizado</p>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,86 +1,279 @@
-/* Estilo do componente host (centralização) */
-:host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f8f9fa;
-  font-family: 'Arial', sans-serif;
-}
-
-/* Container do formulário */
+/* Layout principal */
 .login-container {
-  background-color: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 350px;
-  text-align: center;
+  display: flex;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Título */
-.login-container h2 {
+/* ===== LADO ESQUERDO ===== */
+.left-side {
+  flex: 1;
+  background: linear-gradient(135deg, #0a2540 0%, #1a4d7a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 40px;
+}
+
+/* Logo e slogan */
+.logo-header {
+  text-align: center;
   margin-bottom: 20px;
-  color: #0c2340;
-  font-size: 28px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  font-size: 32px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #cfe2f3;
+}
+
+/* Conteúdo do formulário */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.welcome-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.welcome-title h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.welcome-title p {
+  font-size: 16px;
+  color: #cfe2f3;
 }
 
 /* Inputs */
-.login-container input[type="email"],
-.login-container input[type="password"] {
-  width: 100%;
-  padding: 10px 12px;
-  margin: 10px 0;
-  border: 1px solid #ced4da;
-  border-radius: 6px;
-  font-size: 14px;
-  box-sizing: border-box;
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #e6efff;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
 }
 
-/* Foco */
-.login-container input:focus {
-  border-color: #0c2340;
-  outline: none;
-  box-shadow: 0 0 5px rgba(12, 35, 64, 0.3);
-}
-
-/* Botão principal */
-.login-container button[type="submit"] {
-  background-color: #0c2340;
-  color: white;
-  padding: 10px 15px;
+.input-group input {
+  flex: 1;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  margin-top: 10px;
-  transition: background-color 0.3s;
-}
-
-.login-container button[type="submit"]:hover {
-  background-color: #12284f;
-}
-
-/* Mensagem de erro */
-.login-container p[style] {
-  margin-top: 10px;
+  background: transparent;
+  outline: none;
   font-size: 14px;
+  color: #333;
 }
 
-/* Texto e botão de cadastro centralizados */
-.login-container .cadastro-texto {
+.input-group .material-icons {
+  color: #666;
+  margin-right: 10px;
+  cursor: default;
+}
+
+.toggle-visibility {
+  cursor: pointer;
+}
+
+/* Botão de login */
+.login-button {
+  width: 100%;
+  background: #00b377;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 4px 12px rgba(0, 179, 119, 0.4);
+}
+
+.login-button:hover {
+  background: #00a36c;
+}
+
+/* Texto de cadastro */
+.register-text {
   text-align: center;
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-.login-container .cadastro-texto button {
-  background: none;
-  border: none;
-  color: #0c2340;
-  cursor: pointer;
+.register-link {
+  color: white;
+  font-weight: 600;
   text-decoration: underline;
-  font-size: 15px;
-  margin-top: 8px;
+}
+
+/* ===== LADO DIREITO ===== */
+.right-side {
+  flex: 1;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.illustration-container {
+  max-width: 500px;
+  position: relative;
+}
+
+.paper-plane {
+  position: absolute;
+  top: -50px;
+  right: 100px;
+  width: 40px;
+  height: 40px;
+  color: #0a2540;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.phone-mockup {
+  background: linear-gradient(135deg, #0a2540 0%, #1a4d7a 100%);
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  margin: 0 auto 40px;
+  width: 280px;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar svg {
+  width: 50px;
+  height: 50px;
+  color: #0a2540;
+}
+
+.password-dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.line {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  margin: 10px 0;
+}
+
+.characters {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.character {
+  text-align: center;
+}
+
+.character-body {
+  width: 60px;
+  height: 80px;
+  border-radius: 30px 30px 20px 20px;
+  margin-bottom: 10px;
+}
+
+.character-shadow {
+  width: 50px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.char1 .character-body {
+  background: #10b981;
+}
+
+.char2 .character-body {
+  background: #0a2540;
+}
+
+.welcome-text {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.welcome-text h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle1 {
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  right: 50px;
+  background: rgba(10, 37, 64, 0.1);
+}
+
+.circle2 {
+  width: 80px;
+  height: 80px;
+  bottom: 100px;
+  left: 50px;
+  background: rgba(16, 185, 129, 0.1);
 }

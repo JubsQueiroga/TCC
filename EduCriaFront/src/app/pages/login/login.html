@@ -1,22 +1,104 @@
 <div class="login-container">
-  <h2>Login</h2>
+  <!-- Lado Esquerdo - Formulário -->
+  <div class="left-side">
+    <div class="logo-header">
+      <div class="logo-container">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">EDUCRIA</div>
+      </div>
+      <div class="tagline">Ponte para o futuro</div>
+    </div>
 
-  <form (ngSubmit)="fazerLogin()">
-    <label>Email:</label>
-    <input type="email" [(ngModel)]="email" name="email" required><br><br>
+    <div class="form-container">
+      <div class="welcome-title">
+        <h1>Bem-vindo</h1>
+        <p>Faça login para continuar</p>
+      </div>
 
-    <label>Senha:</label>
-    <input type="password" [(ngModel)]="senha" name="senha" required><br><br>
+      <form (ngSubmit)="fazerLogin()">
+        <div class="input-group">
+          <span class="material-icons">mail</span>
+          <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+        </div>
 
-    <button type="submit">Entrar</button>
-  </form>
+        <div class="input-group">
+          <span class="material-icons">lock</span>
+          <input
+            type="password"
+            [(ngModel)]="senha"
+            name="senha"
+            placeholder="Senha"
+            required
+          />
+          <span class="material-icons toggle-visibility">visibility</span>
+        </div>
 
-  <p *ngIf="erro" style="color: red;">{{ erro }}</p>
+        <button type="submit" class="login-button">ENTRAR</button>
 
-  <!-- Centralizado e com botão embaixo -->
-  <p class="cadastro-texto">
-    Não tem conta?
-    <br />
-    <button type="button" (click)="irParaCadastro()">Cadastre-se</button>
-  </p>
-</div>
+        <p class="register-text">
+          Não tem conta?
+          <a href="/cadastro" class="register-link">Cadastre-se aqui</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lado Direito - Ilustração SVG -->
+  <div class="right-side">
+            <div class="decorative-circle circle1"></div>
+            <div class="decorative-circle circle2"></div>
+
+            <div class="illustration-container">
+                <div class="paper-plane">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </div>
+
+                <div class="phone-mockup">
+                    <div class="user-avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="password-dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="line" style="width: 100%"></div>
+                    <div class="line" style="width: 75%"></div>
+                </div>
+
+                <div class="characters">
+                    <div class="character char1">
+                        <div class="character-body"></div>
+                        <div class="character-shadow"></div>
+                    </div>
+                    <div class="character char2">
+                        <div class="character-body"></div>
+                        <div class="character-shadow"></div>
+                    </div>
+                </div>
+
+                <div class="welcome-text">
+                    <h2>Bem-vindo de volta!</h2>
+                    <p>Acesse sua conta e continue sua jornada de aprendizado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>

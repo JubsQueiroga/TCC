@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* home.css */
 .header {
   display: flex;
@@ -16,14 +17,44 @@
   align-items: center;       /* alinha verticalmente */
   justify-content: center;  /* centraliza horizontalmente no header */
   gap: 15px;                 /* espaço entre o chapéu e o texto */
-  margin: 0;
-  color: #0e3a70;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 36px;
-  font-weight: 800;
+=======
+/* home.css - Com Bootstrap Offcanvas */
+
+/* ========== HEADER ========== */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  background: linear-gradient(135deg, #0a2540 0%, #0b36b9 100%);
+  padding: 0 50px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
+.titulo-container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+>>>>>>> educria
+  margin: 0;
+  color: #ffffff;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+<<<<<<< HEAD
 .buttonsHeader {
   display: flex;
   width: auto;
@@ -56,26 +87,122 @@
   font-size: 14px;
   margin-top: 50px;
   letter-spacing: 1px;
-  font-style: italic;
-  color: #03040588; 
-  text-transform: lowercase;
-  text-shadow: #9ac7ff;
-  font-style: italic;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+=======
+.titulo-container h1 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 32px;
 }
 
+.subtitulo {
+  font-size: 11px;
+  margin-top: 3px;
+  letter-spacing: 2px;
+>>>>>>> educria
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: lowercase;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-weight: 300;
+}
+
+<<<<<<< HEAD
+=======
+/* ========== BOTÕES DO HEADER ========== */
+.buttonsHeader {
+  display: flex;
+  width: auto;
+  position: relative;
+  gap: 15px;
+  align-items: center;
+  z-index: 100;
+}
+
+/* ========== BOTÃO TOGGLER (HAMBURGUER) ========== */
+.navbar-toggler {
+  width: 55px;
+  height: 55px;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-toggler:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.icone-perfil {
+  display: flex;
+  width: 55px;
+  height: 55px;
+  margin-right: 60px;
+  margin-left: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.icone-perfil:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.icone-perfil img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+/* ========== ÍCONE CHAPÉU ========== */
+.icone-educacao {
+  width: 45px;
+  height: 45px;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
+
+>>>>>>> educria
 img {
   align-items: center;
   padding: 0;
-  margin: 0%;
-  top: 30px;
+  margin: 0;
   height: auto;
-  width: 100px;
-  margin-bottom: 0px;
   max-width: 100%;
-  height: auto;
 }
 
+<<<<<<< HEAD
 .btn-atividades {
   position: fixed;        
   left: 30px;                        
@@ -83,18 +210,257 @@ img {
   width: 300px;
   height: 200px;
   border-radius: 50%;
+=======
+/* ========== OFFCANVAS CUSTOMIZADO ========== */
+.offcanvas {
+  background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%) !important;
+  width: 350px !important;
+}
+
+.offcanvas-header {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px 30px;
+}
+
+.offcanvas-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.btn-close-white {
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.btn-close-white:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+.offcanvas-body {
+  padding: 20px 0;
+}
+
+/* ========== MENU OFFCANVAS ITEMS ========== */
+.navbar-nav {
+  padding: 0;
+}
+
+.nav-item {
+  margin: 5px 0;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  padding: 15px 30px !important;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: #ffffff;
+  padding-left: 35px !important;
+}
+
+/* ========== DROPDOWN NO OFFCANVAS ========== */
+.dropdown-menu-dark {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-left: 30px;
+  border-radius: 12px;
+}
+
+.dropdown-item {
+  color: rgba(255, 255, 255, 0.85) !important;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  padding-left: 25px;
+}
+
+.dropdown-divider {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 10px 0;
+}
+
+/* ========== SEARCH FORM NO OFFCANVAS ========== */
+.offcanvas-body form {
+  padding: 0 30px;
+  margin-top: 30px;
+}
+
+.offcanvas-body .form-control {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 12px 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.offcanvas-body .form-control:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.offcanvas-body .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.offcanvas-body .btn-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: none;
+  padding: 12px 25px;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.offcanvas-body .btn-success:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+}
+
+/* ========== CONTAINER PRINCIPAL ========== */
+html, body {
+  height: auto;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 140px;
+  padding-bottom: 80px;
+  position: relative;
+}
+
+/* ========== BOAS-VINDAS ========== */
+.boas-vindas {
+  width: 100%;
   text-align: center;
-  margin-top: 20px;
-  top: 50%;
+  padding: 40px 0 20px 0;
+  margin-bottom: 50px;
+}
+
+.boas-vindas h2 {
+  font-size: 36px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+/* ========== BOTÕES DE NAVEGAÇÃO ========== */
+.btn-atividades {
+  position: absolute;        
+  left: 30px;                        
+  top: 200px;
+  width: 300px;
+  height: 200px;
+  border-radius: 12px;
+  text-align: center;
   padding: 10px 20px;
   font-size: 20px;
-  display: flex;                /* habilita flexbox */
-  align-items: center;          /* centraliza verticalmente */
-  justify-content: center;      /* centraliza horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   transition: all 0.3s ease;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background-color: #0e3a70;
   color: white;
   border: none;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+ background: linear-gradient(135deg, #0a2540 0%, #0b36b9 100%);
+  box-shadow: 0 15px 40px rgba(30, 58, 138, 0.35);
+}
+
+.btn-atividades:hover {
+  background-color:#16355a8b;
+
+}
+
+.btn-noticias {
+  position: absolute;        
+  right: 30px;            
+  top: 200px;
+  width: 300px;
+  height: 200px;
+  border-radius: 12px;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: #0e3a70;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #0a2540 0%, #0b36b9 100%);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(30, 58, 138, 0.35);
+}
+
+.btn-noticias:hover {
+  background-color:#16355a8c;
+  transform: translateY(-5px);
+}
+
+.btn-relatorios {
+  position: absolute;        
+  left: 50%;                        
+  transform: translateX(-50%); 
+  width: 300px;
+  height: 200px;
+  border-radius: 12px;
+>>>>>>> educria
+  text-align: center;
+  top: 200px;
+  padding: 10px 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: #0e3a70;
+  color: white;
+  border: none;
+<<<<<<< HEAD
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
@@ -159,25 +525,35 @@ img {
   border-radius: 4px;
 }
 
+=======
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #0a2540 0%, #0b36b9 100%);
+
+  box-shadow: 0 15px 40px rgba(30, 58, 138, 0.35);
+}
+
+>>>>>>> educria
 .btn-relatorios:hover {
   background-color:#16355a8b;
+  transform: translateX(-50%) translateY(-5px);
 }
 
 .btn-calendario {
-  position: fixed;        
+  position: absolute;        
   left: 50%;                        
-  top: 80%; 
+  top: 450px; 
   transform: translateX(-50%);
   width: 300px;
   height: 200px;
-  border-radius: 50%;
+  border-radius: 12px;
   text-align: center;
-  margin-top: 20px;
   padding: 10px 20px;
   font-size: 20px;
-  display: flex;                /* habilita flexbox */
-  align-items: center;          /* centraliza verticalmente */
-  justify-content: center;      /* centraliza horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background-color: #0e3a70;
   color: white;
@@ -185,27 +561,36 @@ img {
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
+<<<<<<< HEAD
   border-radius: 4px;
+=======
+  background: linear-gradient(135deg, #0a2540 0%, #0b36b9 100%);
+  box-shadow: 0 15px 40px rgba(30, 58, 138, 0.35);
+>>>>>>> educria
 }
 
 .btn-calendario:hover {
   background-color:#16355a8b;
+  transform: translateX(-50%) translateY(-5px);
 }
 
 .btn-graficos {
-  position: fixed;        
+  position: absolute;        
   left: 30px;
-  top: 80%;
+  top: 450px;
   width: 300px;
   height: 200px;
+<<<<<<< HEAD
   border-radius: 50%;
+=======
+  border-radius: 12px;
+>>>>>>> educria
   text-align: center;
-  margin-top: 20px;
   padding: 10px 20px;
   font-size: 20px;
-  display: flex;                /* habilita flexbox */
-  align-items: center;          /* centraliza verticalmente */
-  justify-content: center;      /* centraliza horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background-color: #0e3a70;
   color: white;
@@ -213,27 +598,37 @@ img {
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
+<<<<<<< HEAD
   border-radius: 4px;
+=======
+  background: linear-gradient(135deg, #0a2540 0%, #0b36b9 100%);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(30, 58, 138, 0.35);
+>>>>>>> educria
 } 
 
 .btn-graficos:hover {
   background-color:#16355a8c;
+  transform: translateY(-5px);
 }
 
 .btn-jogos {
-  position: fixed;        
+  position: absolute;        
   right: 30px;            
-  top: 80%; 
+  top: 450px; 
   width: 300px;
   height: 200px;
+<<<<<<< HEAD
   border-radius: 50%;
+=======
+  border-radius: 12px;
+>>>>>>> educria
   text-align: center;
-  margin-top: 20px;
   padding: 10px 20px;
   font-size: 20px;
-  display: flex;                /* habilita flexbox */
-  align-items: center;          /* centraliza verticalmente */
-  justify-content: center;      /* centraliza horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background-color: #0e3a70;
   color: white;
@@ -241,16 +636,23 @@ img {
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
+<<<<<<< HEAD
   border-radius: 4px;
+=======
+  background: linear-gradient(135deg, #0a2540 0%, #0b36b9 100%);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(30, 58, 138, 0.35);
+>>>>>>> educria
 } 
 
 .btn-jogos:hover {
   background-color:#16355a8c;
+  transform: translateY(-5px);
 }
 
 html, body {
   height: auto;
-  overflow-y: auto; /* habilita rolagem */
+  overflow-y: auto;
   margin: 0;
   padding: 0;
 }
@@ -259,14 +661,22 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* começa de cima */
-  min-height: 100vh;
-  padding-bottom: 150px; /* dá espaço pra ver o fim */
+  justify-content: flex-start;
+  min-height: 150vh;
+  padding-top: 120px;
+  padding-bottom: 100px;
+  position: relative;
 }
 
+<<<<<<< HEAD
 /* ========== MENU DROPDOWN (NOVO) ========== */
 .menu-dropdown {
   position: absolute;
+=======
+/* ========== MENU DROPDOWN ========== */
+.menu-dropdown {
+  position: fixed;
+>>>>>>> educria
   top: 130px;
   right: 10px;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);

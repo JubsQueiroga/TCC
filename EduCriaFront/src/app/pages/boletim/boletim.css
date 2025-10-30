@@ -1,0 +1,123 @@
+
+.container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 40px 20px;
+}
+
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.boletim-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.titulo {
+  color: #1e4a7a;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.boletim-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.boletim-table thead {
+  background-color: #1e4a7a;
+  color: white;
+}
+
+.boletim-table th {
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.boletim-table td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #e5e5e5;
+  color: #333;
+  font-size: 15px;
+}
+
+.boletim-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.materia-col {
+  font-weight: 600;
+  color: #1e4a7a;
+}
+
+.nota-col, .media-col {
+  text-align: center;
+  font-weight: 500;
+}
+
+.nota-col.aprovado, .media-col.aprovado {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.nota-col.recuperacao, .media-col.recuperacao {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.nota-col.reprovado, .media-col.reprovado {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.faltas-col {
+  text-align: center;
+  color: #666;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge.aprovado {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.badge.recuperacao {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.badge.reprovado {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+@media (max-width: 768px) {
+  .boletim-table th,
+  .boletim-table td {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+}

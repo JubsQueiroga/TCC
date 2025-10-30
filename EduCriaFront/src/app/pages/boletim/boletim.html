@@ -1,0 +1,54 @@
+
+<div class="container">
+  <div class="content">
+    
+    <div class="boletim-card">
+      <h2 class="titulo">Boletim Escolar - 1º Bimestre 2024</h2>
+
+      <div class="table-wrapper">
+        <table class="boletim-table">
+          <thead>
+            <tr>
+              <th>Matéria</th>
+              <th>1º Bim</th>
+              <th>2º Bim</th>
+              <th>3º Bim</th>
+              <th>4º Bim</th>
+              <th>Média</th>
+              <th>Faltas</th>
+              <th>Situação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of boletim">
+              <td class="materia-col">{{ item.materia }}</td>
+              <td [class]="'nota-col ' + item.situacao">
+                {{ item.bim1 !== null ? item.bim1 : '-' }}
+              </td>
+              <td class="nota-col">
+                {{ item.bim2 !== null ? item.bim2 : '-' }}
+              </td>
+              <td class="nota-col">
+                {{ item.bim3 !== null ? item.bim3 : '-' }}
+              </td>
+              <td class="nota-col">
+                {{ item.bim4 !== null ? item.bim4 : '-' }}
+              </td>
+              <td [class]="'media-col ' + item.situacao">
+                {{ item.media }}
+              </td>
+              <td class="faltas-col">{{ item.faltas }}</td>
+              <td>
+                <span [class]="'badge ' + item.situacao">
+                  {{ item.situacao === 'aprovado' ? 'Aprovado' : 
+                     item.situacao === 'recuperacao' ? 'Recuperação' : 'Reprovado' }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

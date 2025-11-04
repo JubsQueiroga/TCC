@@ -1,1 +1,21 @@
-<p>noticias works!</p>
+<div class="header-container">
+  <button class="back-button" (click)="goBack()">
+    <span class="arrow-icon">←</span>
+  </button>
+  <h1 class="header-title">NOTÍCIAS GERAIS</h1>
+</div>
+<div class="noticias-container">
+  <div class="noticia-card" *ngFor="let noticia of noticias">
+    <div class="noticia-icon" [style.background-color]="noticia.cor">
+      <span class="icon">{{ noticia.icone }}</span>
+    </div>
+    <div class="noticia-content">
+      <p class="noticia-texto">{{ noticia.titulo }}</p>
+    </div>
+  </div>
+
+  <button (click)="irParaCalendario()"  class="add-button">
+    <span class="plus-icon">+</span>
+    <span class="add-text">IR PARA O CALENDÁRIO</span>
+  </button>
+</div>

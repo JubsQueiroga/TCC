@@ -1,1 +1,46 @@
-<p>calendario works!</p>
+<div class="header-container">
+  <button class="back-button" (click)="voltarParaHome()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+  </button>
+  <h1 class="title">CALENDÁRIO</h1>
+</div>
+
+<div class="calendario-container">
+  <div class="mes-navegacao">
+    <button class="nav-button" (click)="mesAnterior()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    
+    <h2 class="mes-titulo">{{ nomeMes }}</h2>
+    
+    <button class="nav-button" (click)="proximoMes()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  <div class="calendario-grid">
+    <!-- Cabeçalho dos dias da semana -->
+    <div class="dia-semana-header" *ngFor="let dia of diasSemana">
+      {{ dia }}
+    </div>
+
+    <!-- Dias do calendário -->
+    <div 
+      class="dia-celula" 
+      *ngFor="let diaObj of diasCalendario"
+      [class.outro-mes]="!diaObj.mesAtual"
+    >
+      {{ diaObj.dia }}
+    </div>
+  </div>
+
+  <button class="adicionar-button" (click)="adicionarProgramacao()">
+    IR PARA NOTÍCIAS
+  </button>
+</div>

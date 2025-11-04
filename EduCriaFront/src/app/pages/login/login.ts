@@ -1,55 +1,49 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../../shared/auth.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.html',
-  styleUrls: ['./login.css'],
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule, MatSnackBarModule],
+  templateUrl: './login.html',
+  styleUrls: ['./login.css']
 })
 export class Login {
   email: string = '';
   senha: string = '';
-  erro: string = '';
   mostrarSenha: boolean = false;
+  erro: string = '';
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit() {
-    console.log('Login iniciado');
-    // 🔹 Verifica login contínuo
-    if (this.authService.estaLogado()) {
-      this.router.navigate(['/home']);
-    }
-  }
-
-  irParaCadastro() {
-    this.router.navigate(['/cadastro']);
-  }
-
   toggleMostrarSenha() {
-    this.mostrarSenha = !this.mostrarSenha;
+   this.mostrarSenha = !this.mostrarSenha;
   }
 
   fazerLogin() {
-    // 🔹 Chama o AuthService para validar login
+    if (!this.email || !this.senha) {
+      this.erro = 'Preencha todos os campos.';
+      return;
+    }
+
     this.authService.login(this.email, this.senha).subscribe({
-      next: (res) => {
-        // 🔹 Guarda token no localStorage (login contínuo)
-        localStorage.setItem('token', res.token);
+      next: () => {
+        this.snackBar.open('Login realizado com sucesso!', 'Fechar', {
+          duration: 3000,
+        });
         this.router.navigate(['/home']);
       },
-      error: (err) => {
-        console.error('Erro no login', err);
-        this.erro = 'Email ou senha inválidos!';
-      },
+      error: () => {
+        this.erro = 'E-mail ou senha incorretos.';
+      }
     });
   }
 }

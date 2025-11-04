@@ -30,13 +30,18 @@
         <div class="input-group">
           <span class="material-icons">lock</span>
           <input
-            type="password"
+            [type]="mostrarSenha ? 'text' : 'password'"
             [(ngModel)]="senha"
             name="senha"
             placeholder="Senha"
             required
           />
-          <span class="material-icons toggle-visibility">visibility</span>
+          <span
+            class="material-icons toggle-visibility"
+            (click)="toggleMostrarSenha()"
+          >
+            {{ mostrarSenha ? 'visibility_off' : 'visibility' }}
+          </span>
         </div>
 
         <button type="submit" class="login-button">ENTRAR</button>
@@ -51,54 +56,52 @@
 
   <!-- Lado Direito - Ilustração SVG -->
   <div class="right-side">
-            <div class="decorative-circle circle1"></div>
-            <div class="decorative-circle circle2"></div>
+    <div class="decorative-circle circle1"></div>
+    <div class="decorative-circle circle2"></div>
 
-            <div class="illustration-container">
-                <div class="paper-plane">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                    </svg>
-                </div>
+    <div class="illustration-container">
+      <div class="paper-plane">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </div>
 
-                <div class="phone-mockup">
-                    <div class="user-avatar">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <div class="password-dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <div class="line" style="width: 100%"></div>
-                    <div class="line" style="width: 75%"></div>
-                </div>
-
-                <div class="characters">
-                    <div class="character char1">
-                        <div class="character-body"></div>
-                        <div class="character-shadow"></div>
-                    </div>
-                    <div class="character char2">
-                        <div class="character-body"></div>
-                        <div class="character-shadow"></div>
-                    </div>
-                </div>
-
-                <div class="welcome-text">
-                    <h2>Bem-vindo de volta!</h2>
-                    <p>Acesse sua conta e continue sua jornada de aprendizado</p>
-                </div>
-            </div>
+      <div class="phone-mockup">
+        <div class="user-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
         </div>
-    </div>
+        <div class="password-dots">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="line" style="width: 100%"></div>
+        <div class="line" style="width: 75%"></div>
+      </div>
 
-    <script src="login.js"></script>
+      <div class="characters">
+        <div class="character char1">
+          <div class="character-body"></div>
+          <div class="character-shadow"></div>
+        </div>
+        <div class="character char2">
+          <div class="character-body"></div>
+          <div class="character-shadow"></div>
+        </div>
+      </div>
+
+      <div class="welcome-text">
+        <h2>Bem-vindo de volta!</h2>
+        <p>Acesse sua conta e continue sua jornada de aprendizado</p>
+      </div>
+    </div>
+  </div>
+</div>

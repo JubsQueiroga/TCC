@@ -1,1 +1,62 @@
-<p>graficos works!</p>
+
+<div class="header-container">
+  <button class="back-button" (click)="voltarParaHome()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+  </button>
+  <h1 class="title">GRÁFICO DE EVOLUÇÃO</h1>
+</div>
+
+<div class="grafico-container">
+  <div class="legenda">
+    <div class="legenda-item">
+      <span class="legenda-cor bimestre1"></span>
+      <span class="legenda-texto">1º bimestre</span>
+    </div>
+    <div class="legenda-item">
+      <span class="legenda-cor bimestre2"></span>
+      <span class="legenda-texto">2º bimestre</span>
+    </div>
+    <div class="legenda-item">
+      <span class="legenda-cor bimestre3"></span>
+      <span class="legenda-texto">3º bimestre</span>
+    </div>
+    <div class="legenda-item">
+      <span class="legenda-cor bimestre4"></span>
+      <span class="legenda-texto">4º bimestre</span>
+    </div>
+  </div>
+
+  <div class="grafico-area">
+    <div class="eixo-y">
+      <div class="valor-y">35</div>
+      <div class="valor-y">30</div>
+      <div class="valor-y">25</div>
+      <div class="valor-y">20</div>
+      <div class="valor-y">15</div>
+      <div class="valor-y">10</div>
+      <div class="valor-y">5</div>
+      <div class="valor-y">0</div>
+    </div>
+
+    <div class="grafico-barras">
+      <div class="barra-grupo">
+        <div class="barra barra-b1" [style.height.%]="(dados.bimestre1 / 35) * 100"></div>
+        <div class="label-x">1º bimestre</div>
+      </div>
+      <div class="barra-grupo">
+        <div class="barra barra-b2" [style.height.%]="(dados.bimestre2 / 35) * 100"></div>
+        <div class="label-x">2º bimestre</div>
+      </div>
+      <div class="barra-grupo">
+        <div class="barra barra-b3" [style.height.%]="(dados.bimestre3 / 35) * 100"></div>
+        <div class="label-x">3º bimestre</div>
+      </div>
+      <div class="barra-grupo">
+        <div class="barra barra-b4" [style.height.%]="(dados.bimestre4 / 35) * 100"></div>
+        <div class="label-x">4º bimestre</div>
+      </div>
+    </div>
+  </div>
+</div>

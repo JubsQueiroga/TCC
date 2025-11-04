@@ -84,16 +84,33 @@
   outline: none;
   font-size: 14px;
   color: #333;
+  padding-right: 35px;
 }
 
 .input-group .material-icons {
   color: #666;
   margin-right: 10px;
+  pointer-events: none;
 }
 
 .toggle-visibility {
+  position: absolute;
+  right: 15px;
   cursor: pointer;
   color: #666;
+  user-select: none;
+  z-index: 10;
+  pointer-events: auto;
+  transition: color 0.3s ease;
+  margin-right: 0;
+}
+
+.toggle-visibility:hover {
+  color: #333;
+}
+
+.toggle-visibility:active {
+  transform: scale(0.95);
 }
 
 /* Botão de cadastrar */
@@ -126,10 +143,124 @@
   color: white;
   font-weight: 600;
   text-decoration: underline;
-  font-size: 15px;
-  margin-top: 8px;
 }
-.mat-mdc-snack-bar-container.snackbar-warning {
-  bottom: 50% !important;
-  transform: translate(-50%, 50%) !important;
+
+/* ===== LADO DIREITO ===== */
+.right-side {
+  flex: 1;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.illustration-container {
+  max-width: 500px;
+  position: relative;
+}
+
+.paper-plane {
+  position: absolute;
+  top: -50px;
+  right: 100px;
+  width: 40px;
+  height: 40px;
+  color: #0a2540;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.phone-mockup {
+  background: linear-gradient(135deg, #0a2540 0%, #1a4d7a 100%);
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  margin: 0 auto 40px;
+  width: 280px;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar svg {
+  width: 50px;
+  height: 50px;
+  color: #0a2540;
+}
+
+.password-dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.line {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  margin: 10px 0;
+}
+
+.welcome-text {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.welcome-text h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle1 {
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  right: 50px;
+  background: rgba(10, 37, 64, 0.1);
+}
+
+.circle2 {
+  width: 80px;
+  height: 80px;
+  bottom: 100px;
+  left: 50px;
+  background: rgba(16, 185, 129, 0.1);
 }

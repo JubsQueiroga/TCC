@@ -1,0 +1,78 @@
+<div class="header">
+  <button class="back-button" (click)="goBack()">
+    <span class="arrow">←</span>
+  </button>
+  <div class="header-content">
+    <h1>{{ titulo }}</h1>
+    <p class="subtitulo">{{ subtitulo }}</p>
+  </div>
+  <div class="progresso-total">
+    <span>Progresso: {{ calcularProgresso() }}%</span>
+  </div>
+</div>
+
+<!-- Container Principal -->
+<div class="container">
+  
+  <!-- Card de cada atividade -->
+  <div class="atividade-card" *ngFor="let atividade of atividades">
+    
+    <!-- Cabeçalho da atividade -->
+    <div class="atividade-header" 
+         [class.correta]="atividade.correta === true"
+         [class.incorreta]="atividade.correta === false">
+      <h2>{{ atividade.titulo }}</h2>
+    </div>
+
+    <!-- Enunciado -->
+    <div class="atividade-body">
+      <p class="enunciado">{{ atividade.enunciado }}</p>
+
+      <!-- Campo de resposta -->
+      <div class="input-group">
+        <input 
+          type="text" 
+          [(ngModel)]="atividade.respostaUsuario"
+          placeholder="Digite sua resposta"
+          [disabled]="atividade.verificada"
+          (keyup.enter)="verificarResposta(atividade)"
+          class="input-resposta">
+        
+        <button 
+          *ngIf="!atividade.verificada"
+          (click)="verificarResposta(atividade)"
+          class="btn-verificar"
+          [disabled]="!atividade.respostaUsuario">
+          VERIFICAR RESPOSTA
+        </button>
+
+        <button 
+          *ngIf="atividade.verificada"
+          (click)="limparResposta(atividade)"
+          class="btn-tentar-novamente">
+          TENTAR NOVAMENTE
+        </button>
+      </div>
+
+      <div *ngIf="atividade.verificada" class="feedback">
+        <div *ngIf="atividade.correta === true" class="feedback-correto">
+          <span class="icone">✓</span>
+          <span>Parabéns! Resposta correta!</span>
+        </div>
+        
+        <div *ngIf="atividade.correta === false" class="feedback-incorreto">
+          <span class="icone">✗</span>
+          <span>Ops! Tente novamente.</span>
+          <p *ngIf="atividade.dica" class="dica">💡 {{ atividade.dica }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensagem final -->
+  <div *ngIf="calcularProgresso() === 100" class="mensagem-final">
+    <h2>🎉 Parabéns!</h2>
+    <p>Você completou todas as atividades de Física!</p>
+  </div>
+
+</div>

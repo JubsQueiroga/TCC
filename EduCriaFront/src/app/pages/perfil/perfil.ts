@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   selector: 'app-perfil',
   imports: [],
   templateUrl: './perfil.html',
-  styleUrl: './perfil.css'
+  styles: ['']
 })
 export class Perfil {
   constructor(private router: Router) {}  

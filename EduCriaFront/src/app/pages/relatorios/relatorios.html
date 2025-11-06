@@ -1,17 +1,42 @@
-<div class="header-container">
-  <button class="back-button" (click)="goBack()">
-    <span class="arrow-icon">←</span>
-  </button>
-  <h1 class="header-title">ATIVIDADES</h1>
+<div class="header">
+    <button class="back-button" (click)="goBack()">
+        <span class="arrow">←</span>
+    </button>
+    <h1>ATIVIDADES</h1>
 </div>
 
 <div class="container">
-  <div class="card" *ngFor="let materia of materias">
-    <h3>{{ materia.nome }}</h3>
-    <p class="status">{{ materia.status }}</p>
+    <div class="grid">
+        <div class="card" (click)="navigateTo('exatas')">
+            <div class="card-title">Exatas</div>
+            <button class="card-button">COMEÇAR</button>
+            <div class="progress-container">
+                <div class="progress">0%</div>
+            </div>
+        </div>
 
-    <div class="circle" [style.borderColor]="materia.cor">
-      <span>{{ materia.progresso }}%</span>
+        <div class="card" (click)="navigateTo('linguagens')">
+            <div class="card-title">Linguagens</div>
+            <button class="card-button">COMEÇAR</button>
+            <div class="progress-container">
+                <div class="progress">0%</div>
+            </div>
+        </div>
+
+        <div class="card" (click)="navigateTo('humanas')">
+            <div class="card-title">Humanas</div>
+            <button class="card-button">COMEÇAR</button>
+            <div class="progress-container">
+                <div class="progress">0%</div>
+            </div>
+        </div>
+
+        <div class="card" (click)="navigateTo('natureza')">
+            <div class="card-title">Natureza</div>
+            <button class="card-button">COMEÇAR</button>
+            <div class="progress-container">
+                <div class="progress">0%</div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

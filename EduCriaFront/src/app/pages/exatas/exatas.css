@@ -61,8 +61,6 @@
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    text-decoration: none;
-    color: inherit;
 }
 
 .card:hover {
@@ -108,14 +106,14 @@
 
 .progress {
     background: white;
-    border: 3px solid #2d5a8a;
+    border: 3px solid;
     border-radius: 50px;
     padding: 8px 24px;
     font-size: 20px;
     font-weight: bold;
-    color: #2d5a8a;
     min-width: 100px;
     text-align: center;
+    transition: all 0.3s;
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,243 @@
+/* Header - Tema Azul para Física */
+.header {
+  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+  color: white;
+  padding: 30px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
+.arrow {
+  font-size: 24px;
+  color: #0891b2;
+}
+
+.header-content {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.subtitulo {
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.progresso-total {
+  background: rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Cards de Atividade */
+.atividade-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.atividade-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.atividade-header {
+  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+  color: white;
+  padding: 20px 30px;
+}
+
+.atividade-header.correta {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+.atividade-header.incorreta {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.atividade-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.atividade-body {
+  padding: 30px;
+}
+
+.enunciado {
+  font-size: 18px;
+  color: #1f2937;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Input e Botões */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-resposta {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.input-resposta:focus {
+  outline: none;
+  border-color: #0891b2;
+}
+
+.input-resposta:disabled {
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.btn-verificar,
+.btn-tentar-novamente {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-verificar {
+  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+  color: white;
+}
+
+.btn-verificar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(8, 145, 178, 0.3);
+}
+
+.btn-verificar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-tentar-novamente {
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  color: white;
+}
+
+.btn-tentar-novamente:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+}
+
+/* Feedback */
+.feedback {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.feedback-correto {
+  background: #dcfce7;
+  color: #166534;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feedback-incorreto {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.icone {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.dica {
+  margin-top: 10px;
+  font-style: italic;
+  opacity: 0.9;
+  font-size: 15px;
+}
+
+/* Mensagem Final */
+.mensagem-final {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.mensagem-final h2 {
+  font-size: 32px;
+  margin: 0 0 10px 0;
+}
+
+.mensagem-final p {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .header {
+    padding: 20px;
+  }
+  
+  .header-content h1 {
+    font-size: 24px;
+  }
+  
+  .atividade-body {
+    padding: 20px;
+  }
+}

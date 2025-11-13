@@ -277,7 +277,6 @@
   margin: 0;
 }
 
-/* ========== RESPONSIVO ========== */
 @media (max-width: 768px) {
   .header {
     padding: 20px;

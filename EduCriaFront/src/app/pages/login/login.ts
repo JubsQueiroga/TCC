@@ -25,7 +25,7 @@ export class Login {
   ) {}
 
   toggleMostrarSenha() {
-   this.mostrarSenha = !this.mostrarSenha;
+    this.mostrarSenha = !this.mostrarSenha;
   }
 
   fazerLogin() {
@@ -43,6 +43,29 @@ export class Login {
       },
       error: () => {
         this.erro = 'E-mail ou senha incorretos.';
+      }
+    });
+  }
+
+  // ✅ NOVO MÉTODO: Recuperar senha
+  recuperarSenha() {
+    if (!this.email) {
+      this.snackBar.open('Digite seu e-mail para recuperar a senha.', 'Fechar', {
+        duration: 3000,
+      });
+      return;
+    }
+
+    this.authService.resetarSenha(this.email).subscribe({
+      next: () => {
+        this.snackBar.open('E-mail de recuperação enviado!', 'Fechar', {
+          duration: 3000,
+        });
+      },
+      error: () => {
+        this.snackBar.open('Erro ao enviar o e-mail. Tente novamente.', 'Fechar', {
+          duration: 3000,
+        });
       }
     });
   }

@@ -1,0 +1,126 @@
+<div class="container">
+  <header class="header">
+    <button class="back-button" (click)="onBackClick()">
+      <span class="arrow-icon">←</span>
+    </button>
+    <h1 class="title">LINGUAGENS</h1>
+  </header>
+
+  <main class="content">
+    <div class="header-section">
+      <h2 class="subtitle">Literatura</h2>
+      <div class="progress-container">
+        <div class="progress-badge" [class.progress-complete]="progresso === 100">
+          {{ progresso }}%
+        </div>
+      </div>
+    </div>
+
+    <!-- Abas de navegação -->
+    <div class="tabs">
+      <button 
+        class="tab" 
+        [class.active]="abaSelecionada === 'conteudo'"
+        (click)="selecionarAba('conteudo')">
+        📚 Conteúdo
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="abaSelecionada === 'exercicios'"
+        (click)="selecionarAba('exercicios')">
+        ✏️ Exercícios
+      </button>
+      <button 
+        class="tab" 
+        [class.active]="abaSelecionada === 'resumo'"
+        (click)="selecionarAba('resumo')">
+        📝 Meu Resumo
+      </button>
+    </div>
+
+    <!-- Conteúdo das abas -->
+    <div class="tab-content">
+      
+      <!-- ABA: CONTEÚDO -->
+      <div *ngIf="abaSelecionada === 'conteudo'" class="conteudo-section">
+        <div class="intro-box">
+          <h3>📖 Estude os principais movimentos literários</h3>
+          <p>Clique em cada tópico para expandir e ler o conteúdo completo.</p>
+        </div>
+
+        <div class="conteudo-list">
+          <div *ngFor="let conteudo of conteudos" class="conteudo-card">
+            <div class="conteudo-header" (click)="toggleConteudo(conteudo)">
+              <h4>{{ conteudo.titulo }}</h4>
+              <span class="icon">{{ conteudo.expandido ? '▼' : '▶' }}</span>
+            </div>
+            <div class="conteudo-body" [class.expandido]="conteudo.expandido">
+              <p>{{ conteudo.texto }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABA: EXERCÍCIOS -->
+      <div *ngIf="abaSelecionada === 'exercicios'" class="exercicios-section">
+        <div class="intro-box">
+          <h3>✏️ Teste seus conhecimentos</h3>
+          <p>Responda as questões abaixo para praticar.</p>
+          <button class="reset-button" (click)="reiniciarExercicios()">🔄 Reiniciar</button>
+        </div>
+
+        <div class="questoes-list">
+          <div *ngFor="let questao of questoes; let i = index" class="questao-card">
+            <h4 class="questao-titulo">Questão {{ i + 1 }}</h4>
+            <p class="questao-pergunta">{{ questao.pergunta }}</p>
+            
+            <div class="opcoes-list">
+              <div 
+                *ngFor="let opcao of questao.opcoes; let j = index" 
+                class="opcao"
+                [class.correta]="questao.respondida && j === questao.respostaCorreta"
+                [class.incorreta]="questao.respondida && j !== questao.respostaCorreta && questao.acertou === false"
+                [class.desabilitada]="questao.respondida"
+                (click)="responderQuestao(questao, j)">
+                <span class="opcao-letra">{{ ['A', 'B', 'C', 'D'][j] }}</span>
+                <span class="opcao-texto">{{ opcao }}</span>
+                <span *ngIf="questao.respondida && j === questao.respostaCorreta" class="check">✓</span>
+                <span *ngIf="questao.respondida && j !== questao.respostaCorreta && questao.acertou === false" class="cross">✗</span>
+              </div>
+            </div>
+
+            <div *ngIf="questao.respondida" class="feedback">
+              <span [class.acerto]="questao.acertou" [class.erro]="!questao.acertou">
+                {{ questao.acertou ? '✓ Correto!' : '✗ Incorreto. Tente novamente!' }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABA: MEU RESUMO -->
+      <div *ngIf="abaSelecionada === 'resumo'" class="resumo-section">
+        <div class="intro-box">
+          <h3>📝 Escreva seus próprios resumos</h3>
+          <p>Anote os pontos mais importantes sobre Literatura.</p>
+        </div>
+
+        <div class="resumo-container">
+          <textarea 
+            class="resumo-textarea"
+            [(ngModel)]="resumoTexto"
+            placeholder="Digite seus resumos aqui... 
+
+Por exemplo:
+- Realismo: objetividade, descrição detalhada
+- Modernismo: ruptura com academicismo
+- Barroco: antíteses, linguagem rebuscada"
+            rows="20">
+          </textarea>
+          <button class="save-button" (click)="salvarResumo()">💾 Salvar Resumo</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>

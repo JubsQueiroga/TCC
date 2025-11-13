@@ -1,0 +1,30 @@
+<div class="header">
+  <button class="back-button" (click)="onBackClick()"></button>
+  <h1>LINGUAGENS</h1>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">Redação</div>
+    <button class="start-button" (click)="onRedacaoClick()">
+      {{ redacao.status }}
+    </button>
+    <div class="progress-container">
+      <div class="progress-badge" [ngClass]="getProgressClass(redacao.progresso)">
+        {{ redacao.progresso }}%
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Literatura</div>
+    <button class="start-button" (click)="onLiteraturaClick()">
+      {{ literatura.status }}
+    </button>
+    <div class="progress-container">
+      <div class="progress-badge" [ngClass]="getProgressClass(literatura.progresso)">
+        {{ literatura.progresso }}%
+      </div>
+    </div>
+  </div>
+</div>

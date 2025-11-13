@@ -86,7 +86,7 @@ export class AuthService {
     if (email && senha) {
       const usuario = {
         id: 'user_' + Date.now(),
-        nome: nome || email.split('@')[0], // Usa parte do email como nome
+        nome: nome || email.split('@')[0],
         email: email,
         token: this.gerarToken()
       };
@@ -105,5 +105,11 @@ export class AuthService {
   // 🔹 GERA TOKEN SIMPLES
   private gerarToken(): string {
     return 'token_' + Math.random().toString(36).substr(2, 9) + Date.now();
+  }
+
+  // 🔹 RESETAR SENHA
+  resetarSenha(email: string): Observable<any> {
+    // Se você tiver um endpoint real, troque a URL abaixo:
+    return this.http.post(`${this.apiUrl}/resetar-senha`, { email });
   }
 }

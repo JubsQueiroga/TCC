@@ -1,44 +1,46 @@
+<div class="header">
+  <button class="back-button" (click)="voltarHome()"></button>
+  <h1>PERFIL</h1>
+</div>
+
 <div class="container">
-  <div class="content">
-  
-<button class="back-button" (click)="goBack()">
-    <span class="arrow-icon">←</span>
-  </button>                  
-    <div class="card perfil-card">
-      <div class="perfil-header">
-        <div class="foto-perfil">
-      <img src="img/perfil.png" alt="Chapéu de formatura" class="icone-educacao">
-        </div>
-        <div class="dados">
-          <h1 class="nome">Júlia Queiroga</h1>
-          <p class="email">juliaqueiroga@educria.com</p>
-          <p class="funcao">Estudante</p>
-        </div>
+  <div class="profile-card">
+    <!-- Ícone de Perfil -->
+    <div class="profile-icon">
+      <span class="initials">{{ getIniciais() }}</span>
+    </div>
+
+    <!-- Informações do Usuário -->
+    <div class="profile-info">
+      <div class="info-item">
+        <span class="info-label">Nome:</span>
+        <span class="info-value">{{ usuario.nome }}</span>
       </div>
 
-      <div class="perfil-info">
-        <div class="info-item">
-          <span class="label">Matrícula:</span>
-          <span class="valor">20251023</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Turma:</span>
-          <span class="valor">3º Ano - C</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Curso:</span>
-          <span class="valor">Ensino Médio</span>
-        </div>
-        <div class="info-item">
-          <span class="label">Instituição:</span>
-          <span class="valor">EDUCRIA</span>
-        </div>
+      <div class="info-item">
+        <span class="info-label">Matrícula:</span>
+        <span class="info-value">{{ usuario.matricula }}</span>
       </div>
 
-      <div class="acoes">
-        <button class="editar-btn">Editar Perfil</button>
+      <div class="info-item">
+        <span class="info-label">Email:</span>
+        <span class="info-value">{{ usuario.email }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Turma:</span>
+        <span class="info-value">{{ usuario.turma }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Escola:</span>
+        <span class="info-value">{{ usuario.escola }}</span>
       </div>
     </div>
 
+    <!-- Botão Sair -->
+    <button class="logout-button" (click)="sair()">
+      SAIR
+    </button>
   </div>
 </div>

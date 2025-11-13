@@ -1,0 +1,70 @@
+<div class="header">
+  <button class="back-button" (click)="goBack()"></button>
+  <div class="header-content">
+    <h1>Biologia</h1>
+    <p class="subtitle">Células e Ecossistemas</p>
+  </div>
+  <div class="progress-badge">Progresso: {{progresso}}%</div>
+</div>
+
+<div class="container">
+  <div class="activity-card">
+    <div class="activity-header">Atividade 1:</div>
+    <div class="activity-content">
+      <p class="question">Qual é a menor unidade estrutural e funcional dos seres vivos?</p>
+      <input 
+        type="text" 
+        class="answer-input" 
+        placeholder="Digite sua resposta"
+        [(ngModel)]="resposta1"
+      >
+      <button class="verify-button" (click)="verificarResposta(1)">VERIFICAR RESPOSTA</button>
+      <div class="feedback" *ngIf="feedback1">{{feedback1}}</div>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">Atividade 2:</div>
+    <div class="activity-content">
+      <p class="question">Qual é o processo pelo qual as plantas produzem seu próprio alimento usando luz solar?</p>
+      <input 
+        type="text" 
+        class="answer-input" 
+        placeholder="Digite sua resposta"
+        [(ngModel)]="resposta2"
+      >
+      <button class="verify-button" (click)="verificarResposta(2)">VERIFICAR RESPOSTA</button>
+      <div class="feedback" *ngIf="feedback2">{{feedback2}}</div>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">Atividade 3:</div>
+    <div class="activity-content">
+      <p class="question">Qual é o nome da molécula que carrega informação genética nos seres vivos?</p>
+      <input 
+        type="text" 
+        class="answer-input" 
+        placeholder="Digite sua resposta"
+        [(ngModel)]="resposta3"
+      >
+      <button class="verify-button" (click)="verificarResposta(3)">VERIFICAR RESPOSTA</button>
+      <div class="feedback" *ngIf="feedback3">{{feedback3}}</div>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">Atividade 4:</div>
+    <div class="activity-content">
+      <p class="question">Como são chamados os organismos que se alimentam de outros seres vivos?</p>
+      <input 
+        type="text" 
+        class="answer-input" 
+        placeholder="Digite sua resposta"
+        [(ngModel)]="resposta4"
+      >
+      <button class="verify-button" (click)="verificarResposta(4)">VERIFICAR RESPOSTA</button>
+      <div class="feedback" *ngIf="feedback4">{{feedback4}}</div>
+    </div>
+  </div>
+</div>

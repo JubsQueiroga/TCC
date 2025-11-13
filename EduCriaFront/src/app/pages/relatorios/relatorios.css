@@ -1,5 +1,5 @@
 .header {
-    background: linear-gradient(135deg, #1a3a5c 0%, #2d5a8a 100%);
+    background: linear-gradient(135deg, #0a2540 0%, #3b82f6 100%);
     color: white;
     padding: 20px 40px;
     display: flex;
@@ -51,18 +51,15 @@
 }
 
 .card {
-    background: linear-gradient(135deg, #b8c5d6 0%, #d4dce6 100%);
+   background: linear-gradient(135deg, #9a9a9b 0%, #d4dce6 100%); 
     border-radius: 20px;
-    padding: 30px;
+    padding: 55px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
 }
 
 .card:hover {
@@ -71,7 +68,7 @@
 }
 
 .card-title {
-    background: linear-gradient(135deg, #5a6b7f 0%, #6b7c8f 100%);
+    background: linear-gradient(135deg, #052c5a 0%, #6b7c8f 100%);
     color: white;
     padding: 15px 40px;
     border-radius: 12px;
@@ -83,7 +80,7 @@
 }
 
 .card-button {
-    background: linear-gradient(135deg, #5a6b7f 0%, #6b7c8f 100%);
+   background: linear-gradient(135deg, #052c5a 0%, #6b7c8f 100%);
     color: white;
     border: none;
     padding: 12px 40px;
@@ -92,12 +89,13 @@
     font-weight: 600;
     cursor: pointer;
     letter-spacing: 1px;
-    transition: background 0.3s;
+    transition: all 0.3s;
     width: 100%;
 }
 
 .card-button:hover {
     background: linear-gradient(135deg, #4a5b6f 0%, #5b6c7f 100%);
+    transform: scale(1.05);
 }
 
 .progress-container {

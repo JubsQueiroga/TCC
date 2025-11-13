@@ -1,0 +1,22 @@
+<div class="container">
+  <header class="header">
+    <button class="back-button" (click)="onBackClick()">
+      <span class="arrow-icon">←</span>
+    </button>
+    <h1 class="title">LINGUAGENS</h1>
+  </header>
+
+  <main class="content">
+    <h2 class="subtitle">Redação</h2>
+    
+    <div class="redacao-container">
+      <label class="label">Escreva sua redação aqui:</label>
+      <textarea 
+        class="textarea"
+        [(ngModel)]="redacaoTexto"
+        placeholder="Digite sua redação aqui..."
+        rows="20">
+      </textarea>
+    </div>
+  </main>
+</div>

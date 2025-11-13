@@ -1,0 +1,56 @@
+<div class="header">
+  <button class="back-button" (click)="goBack()"></button>
+  <div class="header-content">
+    <h1>História</h1>
+    <p class="subtitle">Brasil e Mundo</p>
+  </div>
+  <div class="progress-badge">Progresso: {{progresso}}%</div>
+</div>
+
+<div class="container">
+  <div class="activity-card">
+    <div class="activity-header">Atividade 1:</div>
+    <div class="activity-content">
+      <p class="question">Em que ano o Brasil proclamou sua independência de Portugal?</p>
+      <input 
+        type="text" 
+        class="answer-input" 
+        placeholder="Digite sua resposta"
+        [(ngModel)]="resposta1"
+      >
+      <button class="verify-button" (click)="verificarResposta(1)">VERIFICAR RESPOSTA</button>
+      <div class="feedback" *ngIf="feedback1">{{feedback1}}</div>
+    </div>
+  </div>
+
+  <div class="activity-card">
+    <div class="activity-header">Atividade 2:</div>
+    <div class="activity-content">
+      <p class="question">Qual foi o período da história brasileira marcado pelo regime militar que durou de 1964 a 1985?</p>
+      <input 
+        type="text" 
+        class="answer-input" 
+        placeholder="Digite sua resposta"
+        [(ngModel)]="resposta2"
+      >
+      <button class="verify-button" (click)="verificarResposta(2)">VERIFICAR RESPOSTA</button>
+      <div class="feedback" *ngIf="feedback2">{{feedback2}}</div>
+    </div>
+  </div>
+
+
+  <div class="activity-card">
+    <div class="activity-header">Atividade 3:</div>
+    <div class="activity-content">
+      <p class="question">Em que ano terminou a Segunda Guerra Mundial?</p>
+      <input 
+        type="text" 
+        class="answer-input" 
+        placeholder="Digite sua resposta"
+        [(ngModel)]="resposta5"
+      >
+      <button class="verify-button" (click)="verificarResposta(5)">VERIFICAR RESPOSTA</button>
+      <div class="feedback" *ngIf="feedback5">{{feedback5}}</div>
+    </div>
+  </div>
+</div>

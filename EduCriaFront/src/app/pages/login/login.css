@@ -343,3 +343,20 @@
     flex: 1;
   }
 }
+/* Link "Esqueci minha senha" */
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-size: 14px;
+  color: #cfe2f3;
+  text-decoration: none;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #ffffff;
+  transform: scale(1.02);
+}

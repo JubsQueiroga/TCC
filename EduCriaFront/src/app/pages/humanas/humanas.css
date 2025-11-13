@@ -1,0 +1,109 @@
+.header {
+    background: linear-gradient(135deg, #0a2540 0%, #3b82f6 100%);
+  color: white;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.back-button {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #f0f0f0;
+}
+
+.back-button::before {
+  content: "←";
+  font-size: 24px;
+  color: #2c5282;
+}
+
+.header h1 {
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.container {
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.card {
+  background: linear-gradient(135deg, #9a9a9b 0%, #d4dce6 100%); 
+  border-radius: 20px;
+  padding: 55px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+   background: linear-gradient(135deg, #052c5a 0%, #6b7c8f 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.start-button {
+  background: linear-gradient(135deg, #052c5a 0%, #6b7c8f 100%);
+  color: white;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+}
+
+.start-button:hover {
+  background-color: #455a64;
+}
+
+.progress-container {
+  display: flex;
+  justify-content: center;
+}
+
+.progress-badge {
+  border: 3px solid #2c5282;
+  background-color: white;
+  color: #2c5282;
+  padding: 12px 50px;
+  border-radius: 30px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.progress-badge.completed {
+  border-color: #48bb78;
+  color: #48bb78;
+}
+
+.footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 14px;
+  color: #4a5568;
+}

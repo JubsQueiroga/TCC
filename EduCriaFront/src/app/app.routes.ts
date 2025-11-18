@@ -12,7 +12,7 @@ import { Calendario } from './pages/calendario/calendario';
 import { Graficos } from './pages/graficos/graficos';
 import { Jogos } from './pages/jogos/jogos';
 import { Perfil } from './pages/perfil/perfil';
-import { Boletim } from './page/boletim/boletim';
+import { Boletim } from './pages/boletim/boletim';
 import { Faltas } from './pages/faltas/faltas';
 import { Matematica } from './pages/matematica/matematica';
 import { Fisica } from './pages/fisica/fisica';
@@ -25,6 +25,8 @@ import { Geografia } from './pages/geografia/geografia';
 import { Historia } from './pages/historia/historia';
 import { NaturezasComponent } from './pages/naturezas/naturezas';
 import { Biologia } from './pages/biologia/biologia';
+import { PerfilJogos } from './pages/perfil-jogos/perfil-jogos';
+import { InicioJogos } from './pages/inicio-jogos/inicio-jogos';  
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -53,4 +55,7 @@ export const routes: Routes = [
   { path: 'fisica', component: Fisica, canActivate: [AuthGuard] },
   { path: 'quimica', component: Quimica, canActivate: [AuthGuard] },
   { path: 'biologia', component: Biologia, canActivate: [AuthGuard] },
+  { path: 'inicio-jogos', component: InicioJogos, canActivate: [AuthGuard] },
+  { path: 'perfil-jogos', component: PerfilJogos, canActivate: [AuthGuard] }
+
 ];

@@ -87,6 +87,6 @@ export class Home {
   }
 
   irParaJogos(): void {
-    this.router.navigate(['/jogos']);
+    this.router.navigate(['/inicio-jogos']);
   }
 }

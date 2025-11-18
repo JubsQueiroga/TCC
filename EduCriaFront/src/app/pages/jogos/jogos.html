@@ -1,1 +1,73 @@
-<p>jogos works!</p>
+<section class="quiz-container">
+  
+  <!-- ⬇️ ADICIONE O BOTÃO AQUI (NO TOPO) -->
+  <div class="header-quiz">
+    <h2>Quiz — Exatas, Humanas e Extras</h2>
+    <button class="btn-perfil" (click)="irParaPerfilJogos()" title="Ver Perfil de Jogos">
+      🥇 Perfil
+    </button>
+   <button class="btn-home" (click)="voltarHome()" title="Voltar para Home">
+       ⬅️ Home
+</button> 
+  </div>
+
+
+  <div *ngIf="!finished">
+    <div class="meta">
+      <span>Questão {{ currentIndex + 1 }} / {{ questions.length }}</span>
+      <span class="category">Categoria: {{ currentQuestion.category }}</span>
+    </div>
+
+    <div class="question">{{ currentQuestion.text }}</div>
+
+    <form (ngSubmit)="submitAnswer()">
+      <div class="options">
+        <label *ngFor="let opt of currentQuestion.options; let i = index" class="option">
+          <input
+            type="radio"
+            name="answer"
+            [value]="i"
+            [(ngModel)]="selectedOption"
+            required
+          />
+          <span>{{ opt }}</span>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button type="button" (click)="skip()">Pular</button>
+        <button type="submit">Próxima</button>
+      </div>
+    </form>
+
+    <div class="progress">
+      <div class="bar">
+        <div class="fill" [style.width.%]="progressPercent"></div>
+      </div>
+      <small>{{ score }} pontos</small>
+    </div>
+  </div>
+
+  <div *ngIf="finished" class="result">
+    <h3>Resultado final</h3>
+    <p>Você acertou <strong>{{ score }}</strong> de {{ questions.length }} perguntas.</p>
+    <p>Percentual: <strong>{{ percent | number: '1.0-0' }}%</strong></p>
+
+    <div class="breakdown">
+      <p>Acertos por categoria:</p>
+      <ul>
+        <li>Exatas: {{ categoryCorrect.Exatas }}</li>
+        <li>Humanas: {{ categoryCorrect.Humanas }}</li>
+        <li>Extras: {{ categoryCorrect.Extras }}</li>
+      </ul>
+    </div>
+    
+    <div class="result-buttons">
+      <button (click)="restart()">Refazer Quiz</button>
+      <!-- ⬅️ BOTÃO ADICIONAL NA TELA DE RESULTADO -->
+      <button (click)="irParaPerfilJogos()" class="btn-perfil-resultado">
+        Ver Meu Perfil de Jogos
+      </button>
+    </div>
+  </div>
+</section>

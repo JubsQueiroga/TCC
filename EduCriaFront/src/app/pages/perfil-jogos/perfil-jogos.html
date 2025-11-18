@@ -1,0 +1,93 @@
+<div class="header">
+  <button class="back-button" (click)="voltarQuiz()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <h1>PERFIL DE JOGOS</h1>
+</div>
+
+<div class="container">
+  <div class="profile-section">
+    <!-- Ícone de Perfil -->
+    <div class="profile-icon">
+      <span class="initials">{{ getIniciais() }}</span>
+    </div>
+    <h2 class="user-name">{{ usuario.nome }}</h2>
+    <p class="user-matricula">Matrícula: {{ usuario.matricula }}</p>
+  </div>
+
+  <!-- Score Principal -->
+  <div class="score-card">
+    <div class="score-icon">🏆</div>
+    <div class="score-info">
+      <span class="score-label">Pontuação Total</span>
+      <span class="score-value">{{ pontuacaoTotal }}</span>
+    </div>
+  </div>
+
+  <!-- Estatísticas do Último Quiz -->
+  <div class="stats-card">
+    <h3>Último Quiz</h3>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-icon">📊</span>
+        <span class="stat-label">Categoria</span>
+        <span class="stat-value">{{ ultimoQuiz.categoria }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">✅</span>
+        <span class="stat-label">Acertos</span>
+        <span class="stat-value">{{ ultimoQuiz.acertos }}/{{ ultimoQuiz.total }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">📈</span>
+        <span class="stat-label">Desempenho</span>
+        <span class="stat-value">{{ calcularPercentual() }}%</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon">⭐</span>
+        <span class="stat-label">Pontos</span>
+        <span class="stat-value">+{{ ultimoQuiz.pontos }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Histórico de Jogos -->
+  <div class="history-card">
+    <h3>Histórico de Jogos</h3>
+    <div class="history-list">
+      <div class="history-item" *ngFor="let jogo of historico">
+        <div class="history-info">
+          <span class="history-categoria">{{ jogo.categoria }}</span>
+          <span class="history-date">{{ jogo.data }}</span>
+        </div>
+        <div class="history-result">
+          <span class="history-score">{{ jogo.acertos }}/{{ jogo.total }}</span>
+          <span class="history-points">+{{ jogo.pontos }} pts</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conquistas -->
+  <div class="achievements-card">
+    <h3>Conquistas</h3>
+    <div class="achievements-grid">
+      <div class="achievement-badge" [class.unlocked]="conquista.desbloqueada" *ngFor="let conquista of conquistas">
+        <span class="achievement-icon">{{ conquista.icone }}</span>
+        <span class="achievement-name">{{ conquista.nome }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botões de Ação -->
+  <div class="action-buttons">
+    <button class="btn-secondary" (click)="verPerfil()">
+      Ver Perfil Educacional
+    </button>
+    <button class="btn-primary" (click)="irParaJogos()">
+      Jogar Novamente
+    </button>
+  </div>
+</div>

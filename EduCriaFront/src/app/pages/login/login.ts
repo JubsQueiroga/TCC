@@ -13,6 +13,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   styleUrls: ['./login.css']
 })
 export class Login {
+
   email: string = '';
   senha: string = '';
   mostrarSenha: boolean = false;
@@ -24,30 +25,57 @@ export class Login {
     private snackBar: MatSnackBar
   ) {}
 
+  ngOnInit() {
+    console.log("🟢 Login component inicializado");
+
+    // 🔥 Se já estiver logado, redireciona para /home automaticamente
+    const logado = localStorage.getItem('logado');
+
+    if (logado === 'true') {
+      console.log("⚠️ Usuário já logado → redirecionando para /home...");
+      this.router.navigate(['/home']);
+    }
+  }
+
   toggleMostrarSenha() {
     this.mostrarSenha = !this.mostrarSenha;
   }
 
   fazerLogin() {
+
+    console.log("📤 Enviando login:", this.email, this.senha);
+
     if (!this.email || !this.senha) {
       this.erro = 'Preencha todos os campos.';
       return;
     }
 
     this.authService.login(this.email, this.senha).subscribe({
-      next: () => {
+      next: (res: any) => {
+        console.log("📥 Resposta do servidor:", res);
+
+        // 🔥 Salva token se existir
+        if (res.token) {
+          localStorage.setItem("token", res.token);
+        }
+
+        // 🔥 SALVA LOGIN PERSISTENTE
+        localStorage.setItem("logado", "true");
+
         this.snackBar.open('Login realizado com sucesso!', 'Fechar', {
           duration: 3000,
         });
+
+        // 🔥 Redireciona para /home
         this.router.navigate(['/home']);
       },
-      error: () => {
+      error: (err) => {
+        console.log("❌ ERRO NO LOGIN:", err);
         this.erro = 'E-mail ou senha incorretos.';
       }
     });
   }
 
-  // ✅ NOVO MÉTODO: Recuperar senha
   recuperarSenha() {
     if (!this.email) {
       this.snackBar.open('Digite seu e-mail para recuperar a senha.', 'Fechar', {

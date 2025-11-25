@@ -6,35 +6,115 @@
 </div>
 
 <div class="relatorio-container">
-  <div class="cards-wrapper">
-    <div class="card">
-      <h3>MATEMÁTICA</h3>
-      <p>
-        Você possui um bom desempenho em matemática e é capaz de resolver
-        problemas de maneira rápida e precisa. Sua maior dificuldade está em
-        raciocínios mais abstratos, como álgebra. Recomenda-se continuar
-        praticando esses conteúdos para aprimorar ainda mais sua compreensão.
-      </p>
+  <!-- Filtros -->
+  <div class="filtros-container">
+    <h3 class="filtros-titulo">📅 Filtros</h3>
+    <div class="filtros-grid">
+      <div class="filtro-item">
+        <label for="periodo">Período</label>
+        <select id="periodo" [(ngModel)]="periodoSelecionado" (change)="aplicarFiltros()">
+          <option value="semana">Última Semana</option>
+          <option value="mes">Último Mês</option>
+          <option value="trimestre">Último Trimestre</option>
+          <option value="ano">Último Ano</option>
+        </select>
+      </div>
+      <div class="filtro-item">
+        <label for="disciplina">Disciplina</label>
+        <select id="disciplina" [(ngModel)]="disciplinaSelecionada" (change)="aplicarFiltros()">
+          <option *ngFor="let disc of disciplinas" [value]="disc.id">{{disc.nome}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards de Resumo -->
+  <div class="resumo-grid">
+    <div class="card-resumo">
+      <div class="card-resumo-header">
+        <span class="card-resumo-label">Média Geral</span>
+        <span class="icone-trend up">📈</span>
+      </div>
+      <p class="card-resumo-valor">{{mediaGeral}}</p>
+      <p class="card-resumo-info positivo">+0.5 vs período anterior</p>
     </div>
 
-    <div class="card">
-      <h3>HISTÓRIA</h3>
-      <p>
-        Você tem se destacado em história, mostrando grande facilidade em
-        compreender a cronologia dos fatos históricos. Seu desempenho nas
-        avaliações é excelente e sua capacidade de argumentação é cada vez mais
-        consistente.
-      </p>
+    <div class="card-resumo">
+      <div class="card-resumo-header">
+        <span class="card-resumo-label">Atividades</span>
+        <span class="icone-trend">📝</span>
+      </div>
+      <p class="card-resumo-valor">{{totalAtividades}}</p>
+      <p class="card-resumo-info">Completadas</p>
     </div>
 
-    <div class="card">
-      <h3>PORTUGUÊS</h3>
-      <p>
-        Você demonstra bom domínio da língua portuguesa, mostrando progresso em
-        sua capacidade de leitura e interpretação de textos. No entanto, precisa
-        melhorar a escrita em relação à estruturação de parágrafos e coesão
-        textual. Recomenda-se mais prática na produção de textos.
-      </p>
+    <div class="card-resumo">
+      <div class="card-resumo-header">
+        <span class="card-resumo-label">Presença</span>
+        <span class="icone-trend">📅</span>
+      </div>
+      <p class="card-resumo-valor">{{presenca}}%</p>
+      <p class="card-resumo-info">{{diasPresentes}} de {{diasTotais}} dias</p>
     </div>
+
+    <div class="card-resumo">
+      <div class="card-resumo-header">
+        <span class="card-resumo-label">Progresso</span>
+        <span class="icone-trend">📊</span>
+      </div>
+      <p class="card-resumo-valor">{{progressoGeral}}%</p>
+      <p class="card-resumo-info">Do conteúdo</p>
+    </div>
+  </div>
+
+  <!-- Desempenho por Disciplina -->
+  <div class="desempenho-container">
+    <h3 class="desempenho-titulo">Desempenho por Disciplina</h3>
+    <div class="disciplinas-list">
+      <div class="card-disciplina" *ngFor="let disc of disciplinasFiltradas">
+        <div class="disciplina-header">
+          <div class="disciplina-info">
+            <h4 class="disciplina-nome">{{disc.nome}}</h4>
+            <span class="disciplina-status" [ngClass]="getClasseStatus(disc.status)">
+              {{disc.status}}
+            </span>
+          </div>
+          <span class="disciplina-nota">{{disc.nota}}</span>
+        </div>
+
+        <div class="progresso-section">
+          <div class="progresso-info">
+            <span>Progresso</span>
+            <span>{{disc.progresso}}%</span>
+          </div>
+          <div class="barra-progresso">
+            <div class="barra-progresso-fill" 
+                 [ngClass]="getClasseStatus(disc.status)"
+                 [style.width.%]="disc.progresso">
+            </div>
+          </div>
+        </div>
+
+        <p class="disciplina-atividades">
+          {{disc.atividades}} atividades completadas no período
+        </p>
+
+        <!-- Relatório texto (expansível) -->
+        <div class="relatorio-texto" *ngIf="disc.mostrarRelatorio">
+          <p>{{disc.relatorio}}</p>
+        </div>
+        <button class="btn-ver-mais" (click)="toggleRelatorio(disc)">
+          {{disc.mostrarRelatorio ? 'Ver menos ▲' : 'Ver análise detalhada ▼'}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recomendações -->
+  <div class="recomendacoes-container">
+    <h3 class="recomendacoes-titulo">💡 Recomendações</h3>
+    <ul class="recomendacoes-list">
+      <li *ngFor="let rec of recomendacoes">• {{rec}}</li>
+    </ul>
   </div>
 </div>

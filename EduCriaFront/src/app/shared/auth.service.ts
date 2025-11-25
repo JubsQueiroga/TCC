@@ -22,50 +22,32 @@ export class AuthService {
     private router: Router
   ) {}
 
-  // 🔹 LOGIN com API (backend)
+  // 🔹 LOGIN com API (JWT)
   login(email: string, senha: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, { email, senha }).pipe(
       tap(response => {
         if (response && response.token) {
-          // Salva token
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('isLoggedIn', 'true');
           
-          // Salva dados do usuário
+          // Salvar token
+          localStorage.setItem('token', response.token);
+
+          // Salvar usuário
           if (response.usuario) {
             localStorage.setItem('usuario', JSON.stringify(response.usuario));
             localStorage.setItem('usuarioLogado', response.usuario.nome);
-            console.log('✅ Login realizado:', response.usuario.nome);
           }
         }
       })
     );
   }
 
-  // 🔹 CADASTRO
-  cadastrar(nome: string, email: string, senha: string): Observable<any> {
-    return this.http.post(this.apiUrl, { nome, email, senha }); 
-  }
-
-  // 🔹 LISTAR USUÁRIOS
-  listarUsuarios(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.apiUrl);
-  }
-
-  // 🔹 LOGOUT - Limpa tudo e redireciona
-  logout(): void {
-    localStorage.clear();
-    console.log('🚪 Logout realizado com sucesso!');
-    this.router.navigate(['/login']);
-  }
-
   // 🔹 VERIFICA SE ESTÁ LOGADO
   estaLogado(): boolean {
-    return localStorage.getItem('isLoggedIn') === 'true' && 
-           localStorage.getItem('token') !== null;
+    const token = localStorage.getItem('token');
+    return token !== null;
   }
 
-  // 🔹 RETORNA DADOS DO USUÁRIO LOGADO
+  // 🔹 RETORNA DADOS DO USUÁRIO
   getUsuario(): Usuario | null {
     const usuario = localStorage.getItem('usuario');
     return usuario ? JSON.parse(usuario) : null;
@@ -81,35 +63,24 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  // 🔹 LOGIN LOCAL (para testes sem backend)
-  loginLocal(email: string, senha: string, nome?: string): boolean {
-    if (email && senha) {
-      const usuario = {
-        id: 'user_' + Date.now(),
-        nome: nome || email.split('@')[0],
-        email: email,
-        token: this.gerarToken()
-      };
-
-      localStorage.setItem('usuario', JSON.stringify(usuario));
-      localStorage.setItem('token', usuario.token);
-      localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('usuarioLogado', usuario.nome);
-
-      console.log('✅ Login local realizado:', usuario.nome);
-      return true;
-    }
-    return false;
+  // 🔹 CADASTRO
+  cadastrar(nome: string, email: string, senha: string): Observable<any> {
+    return this.http.post(this.apiUrl, { nome, email, senha });
   }
 
-  // 🔹 GERA TOKEN SIMPLES
-  private gerarToken(): string {
-    return 'token_' + Math.random().toString(36).substr(2, 9) + Date.now();
+  // 🔹 LISTAR USUÁRIOS
+  listarUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.apiUrl);
   }
 
-  // 🔹 RESETAR SENHA
+  // 🔹 LOGOUT
+  logout(): void {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
+  // 🔹 RECUPERAR SENHA
   resetarSenha(email: string): Observable<any> {
-    // Se você tiver um endpoint real, troque a URL abaixo:
     return this.http.post(`${this.apiUrl}/resetar-senha`, { email });
   }
 }

@@ -78,7 +78,7 @@
   border: 1px solid rgba(255, 82, 82, 0.3);
 }
 
-/* Inputs */
+/* ===== CORREÇÃO PRINCIPAL: Inputs ===== */
 .input-group {
   position: relative;
   display: flex;
@@ -87,6 +87,7 @@
   border-radius: 50px;
   padding: 10px 20px;
   margin-bottom: 20px;
+  z-index: 1; /* Base z-index */
 }
 
 .input-group input {
@@ -96,7 +97,11 @@
   outline: none;
   font-size: 14px;
   color: #333;
-  padding-right: 45px; /* Mais espaço para o ícone */
+  padding-right: 45px;
+  /* 🔥 CORREÇÃO 1: Impede que o input bloqueie cliques no ícone */
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .input-group input::placeholder {
@@ -107,23 +112,29 @@
   color: #666;
   margin-right: 10px;
   pointer-events: none;
+  z-index: 1;
 }
 
-/* Toggle de visibilidade - CORRIGIDO */
+/* ===== CORREÇÃO PRINCIPAL: Toggle de visibilidade ===== */
 .toggle-visibility {
   position: absolute;
   right: 15px;
   cursor: pointer;
   color: #666;
   user-select: none;
-  z-index: 10;
-  pointer-events: auto; /* CRÍTICO: garante que seja clicável */
+  /* 🔥 CORREÇÃO 2: z-index maior que o input */
+  z-index: 10 !important;
+  /* 🔥 CORREÇÃO 3: Garante que seja clicável */
+  pointer-events: auto !important;
   transition: color 0.3s ease, transform 0.1s ease;
-  margin-right: 0;
-  padding: 5px; /* Área clicável maior */
+  padding: 8px; /* 🔥 Área clicável maior */
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  background: transparent;
+  /* 🔥 CORREÇÃO 4: Remove qualquer sobreposição invisível */
+  isolation: isolate;
 }
 
 .toggle-visibility:hover {
@@ -177,6 +188,24 @@
 
 .register-link:hover {
   opacity: 0.8;
+}
+
+/* Link "Esqueci minha senha" */
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-size: 14px;
+  color: #cfe2f3;
+  text-decoration: none;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #ffffff;
+  transform: scale(1.02);
 }
 
 /* ===== LADO DIREITO ===== */
@@ -342,21 +371,4 @@
   .left-side {
     flex: 1;
   }
-}
-/* Link "Esqueci minha senha" */
-.forgot-password {
-  display: block;
-  text-align: right;
-  font-size: 14px;
-  color: #cfe2f3;
-  text-decoration: none;
-  margin-top: -10px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.forgot-password:hover {
-  color: #ffffff;
-  transform: scale(1.02);
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService, Usuario } from '../../shared/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./perfil-jogos.css']
 })
 export class PerfilJogos implements OnInit {
-  usuario = {
+  usuario: Partial<Usuario> = {
     nome: 'João Silva',
     matricula: '2024001'
   };
@@ -37,18 +38,23 @@ export class PerfilJogos implements OnInit {
     { nome: 'Lendário', icone: '👑', desbloqueada: false }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit() {
     this.carregarDados();
   }
 
   carregarDados() {
-    // Carregar dados do usuário
-    const usuarioSalvo = localStorage.getItem('usuario');
-    if (usuarioSalvo) {
-      this.usuario = JSON.parse(usuarioSalvo);
+    // Carregar dados do usuário a partir do estado central (AuthService)
+    const u = this.auth.getUsuario();
+    if (u) {
+      this.usuario = u;
     }
+
+    // Também escuta atualizações reativas (por exemplo, depois de editar perfil)
+    this.auth.currentUser$.subscribe(updated => {
+      if (updated) this.usuario = updated;
+    });
 
     // Carregar último quiz
     const ultimoQuizSalvo = localStorage.getItem('ultimoQuiz');
@@ -125,7 +131,8 @@ export class PerfilJogos implements OnInit {
   }
 
   getIniciais(): string {
-    const nomes = this.usuario.nome.split(' ');
+    const nome = this.usuario.nome ?? 'Usuário';
+    const nomes = nome.split(' ');
     return nomes.length >= 2 
       ? `${nomes[0][0]}${nomes[nomes.length - 1][0]}`.toUpperCase()
       : nomes[0][0].toUpperCase();

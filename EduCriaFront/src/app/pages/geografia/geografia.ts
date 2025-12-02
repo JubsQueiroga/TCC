@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Progresso } from '../../services/progresso';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-geografia',
@@ -26,6 +28,8 @@ export class Geografia {
     2: ['baixa altitude', 'terrenos planos', 'planície', 'planicies'],
     3: ['biodiversidade', 'clima', 'oxigênio', 'oxigenio', 'meio ambiente']
   };
+
+  constructor(private progressoService: Progresso, private auth: AuthService) {}
 
   goBack(): void {
     window.history.back();
@@ -74,5 +78,19 @@ export class Geografia {
     if (this.feedback3.includes('✓')) corretas++;
     
     this.progresso = Math.round((corretas / 3) * 100);
+
+    const userId = this.auth.getUsuarioId();
+    if (userId) {
+      const payload = { usuario_id: userId, materia: 'Geografia', progresso: this.progresso, pontos: Math.round(this.progresso), faltas: 0, boletim: null };
+      this.progressoService.salvar(payload).subscribe({ next: () => console.log('Progresso geografia salvo'), error: (e) => console.error('Erro salvar geografia:', e) });
+    }
+  }
+
+  salvarProgress(): void {
+    const userId = this.auth.getUsuarioId();
+    if (!userId) return alert('Faça login para salvar seu progresso.');
+
+    const payload = { usuario_id: userId, materia: 'Geografia', progresso: this.progresso, pontos: Math.round(this.progresso), faltas: 0, boletim: null };
+    this.progressoService.salvar(payload).subscribe({ next: () => alert('Progresso salvo com sucesso!'), error: () => alert('Erro ao salvar progresso') });
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Menu } from '../../shared/menu/menu';
 import { Footer } from '../../shared/footer/footer';
@@ -23,6 +23,13 @@ export class Home {
     private snackBar: MatSnackBar
   ) {
     this.nomeUsuario = this.authService.getNomeUsuario();
+  }
+
+  ngOnInit(): void {
+    // Inscreve para atualizações reativas do usuário
+    this.authService.currentUser$.subscribe(u => {
+      if (u && u.nome) this.nomeUsuario = u.nome;
+    });
   }
 
   toggleMenu(): void {

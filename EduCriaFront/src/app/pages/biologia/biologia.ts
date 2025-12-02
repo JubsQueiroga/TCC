@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Progresso } from '../../services/progresso';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-biologia',
@@ -29,6 +31,8 @@ export class Biologia {
     3: ['dna', 'ácido desoxirribonucleico', 'acido desoxirribonucleico'],
     4: ['heterótrofos', 'heterotrofos', 'consumidores']
   };
+
+  constructor(private progressoService: Progresso, private auth: AuthService) {}
 
   goBack(): void {
     window.history.back();
@@ -88,5 +92,19 @@ export class Biologia {
     if (this.feedback4.includes('✓')) corretas++;
     
     this.progresso = Math.round((corretas / 4) * 100);
+
+    const userId = this.auth.getUsuarioId();
+    if (userId) {
+      const payload = { usuario_id: userId, materia: 'Biologia', progresso: this.progresso, pontos: Math.round(this.progresso), faltas: 0, boletim: null };
+      this.progressoService.salvar(payload).subscribe({ next: () => console.log('Progresso biologia salvo'), error: (e) => console.error('Erro salvar biologia:', e) });
+    }
+  }
+
+  salvarProgress(): void {
+    const userId = this.auth.getUsuarioId();
+    if (!userId) return alert('Faça login para salvar seu progresso.');
+
+    const payload = { usuario_id: userId, materia: 'Biologia', progresso: this.progresso, pontos: Math.round(this.progresso), faltas: 0, boletim: null };
+    this.progressoService.salvar(payload).subscribe({ next: () => alert('Progresso salvo com sucesso!'), error: () => alert('Erro ao salvar progresso') });
   }
 }

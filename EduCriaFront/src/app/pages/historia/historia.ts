@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Progresso } from '../../services/progresso';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-historia',
@@ -32,6 +34,8 @@ export class Historia {
     4: ['príncipe real', 'principe real', 'nao sei'], // Aceita "não sei" como resposta válida
     5: ['1945']
   };
+  constructor(private progressoService: Progresso, private auth: AuthService) {}
+
   goBack(): void {
     window.history.back();
   }
@@ -100,5 +104,23 @@ export class Historia {
     if (this.feedback5.includes('✓')) corretas++;
     
     this.progresso = Math.round((corretas / 5) * 100);
+
+    // salva no backend quando usuário logado
+    const userId = this.auth.getUsuarioId();
+    if (userId) {
+      const payload = { usuario_id: userId, materia: 'História', progresso: this.progresso, pontos: Math.round(this.progresso), faltas: 0, boletim: null };
+      this.progressoService.salvar(payload).subscribe({
+        next: (r) => console.log('Progresso historia salvo:', r),
+        error: (e) => console.error('Erro salvando progresso historia:', e)
+      });
+    }
+  }
+
+  salvarProgress(): void {
+    const userId = this.auth.getUsuarioId();
+    if (!userId) return alert('Faça login para salvar seu progresso.');
+
+    const payload = { usuario_id: userId, materia: 'História', progresso: this.progresso, pontos: Math.round(this.progresso), faltas: 0, boletim: null };
+    this.progressoService.salvar(payload).subscribe({ next: () => alert('Progresso salvo com sucesso!'), error: () => alert('Erro ao salvar progresso') });
   }
 }

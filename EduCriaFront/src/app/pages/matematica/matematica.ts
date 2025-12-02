@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
+import { Progresso } from '../../services/progresso';
+import { AuthService } from '../../shared/auth.service';
 
 interface Atividade {
   numero: number;
@@ -59,8 +61,19 @@ export class Matematica {
 
   constructor(
     private router: Router,
-    private location: Location
+    private location: Location,
+    private progressoService: Progresso,
+    private auth: AuthService
   ) {}
+
+  salvarProgress() {
+    const progressoAtual = this.calcularProgresso();
+    const userId = this.auth.getUsuarioId();
+    if (!userId) return alert('Por favor faça login para salvar seu progresso.');
+
+    const payload = { usuario_id: userId, materia: 'Matemática', progresso: progressoAtual, pontos: Math.round(progressoAtual), faltas: 0, boletim: null };
+    this.progressoService.salvar(payload).subscribe({ next: () => alert('Progresso salvo com sucesso!'), error: (e) => alert('Erro ao salvar progresso') });
+  }
 
   goBack() {
     this.location.back();
@@ -73,6 +86,14 @@ export class Matematica {
     const respostaCorreta = atividade.resposta.trim().toLowerCase();
     
     atividade.correta = respostaLimpa === respostaCorreta;
+
+    // grava progresso após verificação (se usuário logado)
+    const progressoAtual = this.calcularProgresso();
+    const userId = this.auth.getUsuarioId();
+    if (userId) {
+      const payload = { usuario_id: userId, materia: 'Matemática', progresso: progressoAtual, pontos: Math.round(progressoAtual), faltas: 0, boletim: null };
+      this.progressoService.salvar(payload).subscribe({ next: () => console.log('Progresso matematica salvo'), error: (e) => console.error('Erro salvar matematica:', e) });
+    }
   }
 
   limparResposta(atividade: Atividade) {

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
+import { Progresso } from '../../services/progresso';
+import { AuthService } from '../../shared/auth.service';
 
 interface Atividade {
   numero: number;
@@ -62,7 +64,9 @@ export class Fisica {
 
   constructor(
     private router: Router,
-    private location: Location
+    private location: Location,
+    private progressoService: Progresso,
+    private auth: AuthService
   ) {}
 
   goBack() {
@@ -76,6 +80,23 @@ export class Fisica {
     const respostaCorreta = atividade.resposta.trim().toLowerCase();
     
     atividade.correta = respostaLimpa === respostaCorreta;
+
+    // salvar progresso para usuário logado
+    const progress = this.calcularProgresso();
+    const userId = this.auth.getUsuarioId();
+    if (userId) {
+      const payload = { usuario_id: userId, materia: 'Física', progresso: progress, pontos: Math.round(progress), faltas: 0, boletim: null };
+      this.progressoService.salvar(payload).subscribe({ next: () => console.log('Progresso fisica salvo'), error: (e) => console.error('Erro salvar fisica:', e) });
+    }
+  }
+
+  salvarProgress() {
+    const progress = this.calcularProgresso();
+    const userId = this.auth.getUsuarioId();
+    if (!userId) return alert('Faça login para salvar seu progresso.');
+
+    const payload = { usuario_id: userId, materia: 'Física', progresso: progress, pontos: Math.round(progress), faltas: 0, boletim: null };
+    this.progressoService.salvar(payload).subscribe({ next: () => alert('Progresso salvo com sucesso!'), error: () => alert('Erro ao salvar') });
   }
 
   limparResposta(atividade: Atividade) {

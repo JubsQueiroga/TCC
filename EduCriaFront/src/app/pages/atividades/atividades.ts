@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location, CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 interface Disciplina {
@@ -102,7 +103,19 @@ export class Atividades implements OnInit {
     'Explore mais experimentos práticos em ciências para consolidar o aprendizado'
   ];
 
-  constructor(private location: Location) {}
+  constructor(private location: Location, private router: Router) {}
+
+  abrirAtividadesDisciplina(disciplinaId: string) {
+    // mapeamento simples entre id interno e rotas existentes
+    const map: any = {
+      matematica: 'matematica',
+      historia: 'historia',
+      portugues: 'linguagens',
+      ciencias: 'biologia'
+    };
+    const rota = map[disciplinaId] || disciplinaId;
+    this.router.navigate([`/${rota}`]);
+  }
 
   ngOnInit() {
     this.aplicarFiltros();

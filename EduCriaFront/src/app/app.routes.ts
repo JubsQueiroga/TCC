@@ -27,7 +27,8 @@ import { NaturezasComponent } from './pages/naturezas/naturezas';
 import { Biologia } from './pages/biologia/biologia';
 import { PerfilJogos } from './pages/perfil-jogos/perfil-jogos';
 import { InicioJogos } from './pages/inicio-jogos/inicio-jogos';  
-
+import { ProgressoComponent} from './pages/progresso/progresso';
+import { RecuperarSenha} from './pages/recuperar-senha/recuperar-senha';
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: Login },
@@ -56,6 +57,8 @@ export const routes: Routes = [
   { path: 'quimica', component: Quimica, canActivate: [AuthGuard] },
   { path: 'biologia', component: Biologia, canActivate: [AuthGuard] },
   { path: 'inicio-jogos', component: InicioJogos, canActivate: [AuthGuard] },
-  { path: 'perfil-jogos', component: PerfilJogos, canActivate: [AuthGuard] }
+  { path: 'perfil-jogos', component: PerfilJogos, canActivate: [AuthGuard] } ,
+  { path: 'progresso', component: ProgressoComponent, canActivate: [AuthGuard] },
+  { path: 'recuperar-senha', component: RecuperarSenha} 
 
 ];

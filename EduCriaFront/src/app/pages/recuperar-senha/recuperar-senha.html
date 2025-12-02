@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Recuperar Senha</h2>
+
+  <p>Digite seu e-mail para receber as instruções de recuperação.</p>
+
+  <input
+    type="email"
+    [(ngModel)]="email"
+    placeholder="Seu e-mail"
+    class="input"
+  />
+
+  <button class="button" (click)="enviarEmail()">Enviar</button>
+<a class="voltar" (click)="voltar()">Voltar</a>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService, Usuario } from '../../shared/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./perfil.css']
 })
 export class Perfil implements OnInit {
-  usuario = {
+  usuario: Usuario | any = {
     nome: 'João Silva',
     email: 'joao.silva@email.com',
     matricula: '2024001',
@@ -18,14 +19,16 @@ export class Perfil implements OnInit {
     escola: 'Colégio Exemplo'
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
-    // Carregar dados do localStorage ou backend
-    const usuarioSalvo = localStorage.getItem('usuario');
-    if (usuarioSalvo) {
-      this.usuario = JSON.parse(usuarioSalvo);
-    }
+    // Inscreve-se no usuário atual (vem do serviço de autenticação)
+    const u = this.authService.getUsuario();
+    if (u) this.usuario = u;
+    // também mantém o estado reativo se algo mudar no serviço
+    this.authService.currentUser$.subscribe(updated => {
+      if (updated) this.usuario = updated;
+    });
   }
 
   voltarHome() {
@@ -34,8 +37,7 @@ export class Perfil implements OnInit {
 
   sair() {
     if (confirm('Tem certeza que deseja sair?')) {
-      localStorage.removeItem('token');
-      this.router.navigate(['/login']);
+      this.authService.logout();
     }
   }
 

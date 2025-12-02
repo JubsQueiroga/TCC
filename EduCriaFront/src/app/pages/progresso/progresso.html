@@ -1,0 +1,11 @@
+<h2>Progresso</h2>
+
+<div *ngIf="dados; else vazio">
+  <p><strong>Tipo:</strong> {{ dados.tipo }}</p>
+  <p><strong>Fase:</strong> {{ dados.fase }}</p>
+  <p><strong>Pontos:</strong> {{ dados.pontuacao }}</p>
+</div>
+
+<ng-template #vazio>
+  <p>Nenhum progresso registrado.</p>
+</ng-template>

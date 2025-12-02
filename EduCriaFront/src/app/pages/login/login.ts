@@ -29,9 +29,7 @@ export class Login {
     console.log("🟢 Login component inicializado");
 
     // 🔥 Se já estiver logado, redireciona para /home automaticamente
-    const logado = localStorage.getItem('logado');
-
-    if (logado === 'true') {
+    if (this.authService.estaLogado()) {
       console.log("⚠️ Usuário já logado → redirecionando para /home...");
       this.router.navigate(['/home']);
     }
@@ -55,12 +53,7 @@ export class Login {
         console.log("📥 Resposta do servidor:", res);
 
         // 🔥 Salva token se existir
-        if (res.token) {
-          localStorage.setItem("token", res.token);
-        }
-
-        // 🔥 SALVA LOGIN PERSISTENTE
-        localStorage.setItem("logado", "true");
+        // AuthService already persists token/usuario; we only redirect and notify
 
         this.snackBar.open('Login realizado com sucesso!', 'Fechar', {
           duration: 3000,
@@ -76,7 +69,7 @@ export class Login {
     });
   }
 
-  recuperarSenha() {
+  RecuperarSenha() {
     if (!this.email) {
       this.snackBar.open('Digite seu e-mail para recuperar a senha.', 'Fechar', {
         duration: 3000,
@@ -84,7 +77,7 @@ export class Login {
       return;
     }
 
-    this.authService.resetarSenha(this.email).subscribe({
+    this.authService.RecuperarSenha(this.email).subscribe({
       next: () => {
         this.snackBar.open('E-mail de recuperação enviado!', 'Fechar', {
           duration: 3000,

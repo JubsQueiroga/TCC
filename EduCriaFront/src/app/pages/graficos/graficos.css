@@ -1,28 +1,30 @@
 .header-container {
+ margin-bottom: 1%;
   position: relative;
-  background-color: #0c2d5a;
+  background: linear-gradient(135deg, #0a2540 0%, #3b82f6 100%);
   padding: 40px 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  justify-content: center; /* Agora centraliza certinho */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
 .back-button {
-  position: absolute;
-  left: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   background: white;
   border: none;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: #1a1a1a;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;   /* ADICIONADO */
+  left: 20px;           /* Botão no canto */
+  top: 50%;             /* Centralizado na vertical */
+  transform: translateY(-50%);
+  transition: transform 0.2s;
 }
 
 .back-button:hover {
@@ -47,7 +49,8 @@
   font-weight: bold;
   margin: 0;
   letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .grafico-container {

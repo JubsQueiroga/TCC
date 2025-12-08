@@ -9,11 +9,6 @@
     <button class="start-button" (click)="onRedacaoClick()">
       {{ redacao.status }}
     </button>
-    <div class="progress-container">
-      <div class="progress-badge" [ngClass]="getProgressClass(redacao.progresso)">
-        {{ redacao.progresso }}%
-      </div>
-    </div>
   </div>
 
   <div class="card">
@@ -21,10 +16,5 @@
     <button class="start-button" (click)="onLiteraturaClick()">
       {{ literatura.status }}
     </button>
-    <div class="progress-container">
-      <div class="progress-badge" [ngClass]="getProgressClass(literatura.progresso)">
-        {{ literatura.progresso }}%
-      </div>
-    </div>
   </div>
 </div>

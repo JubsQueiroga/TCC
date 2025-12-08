@@ -47,14 +47,16 @@
 }
 
 .card {
-  background: linear-gradient(135deg, #9a9a9b 0%, #d4dce6 100%); 
+   background: #fff;
+    width: 380px;
+    height: 200px;
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
- background: linear-gradient(135deg, #052c5a 0%, #6b7c8f 100%);
+  background: linear-gradient(135deg, #0a2540, #3b82f6 100%);
   color: white;
   padding: 20px;
   border-radius: 10px;
@@ -65,7 +67,8 @@
 }
 
 .start-button {
-  background: linear-gradient(135deg, #052c5a 0%, #6b7c8f 100%);
+     background: linear-gradient(135deg, #0a2540, #3b82f6 100%);
+    color: white;
   color: white;
   border: none;
   padding: 18px 40px;

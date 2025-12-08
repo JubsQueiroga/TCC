@@ -43,6 +43,6 @@ export class Noticias {
   constructor(private router: Router) {}  
   
   goBack() {
-    this.router.navigate(['/calendario']);  
+    this.router.navigate(['/home']);  
   }
 }

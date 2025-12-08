@@ -11,10 +11,6 @@
             <div class="card-title">{{ materia.nome }}</div>
             <button class="card-button">{{ materia.status }}</button>
             <div class="progress-container">
-                <div class="progress" 
-                     [style.border-color]="materia.progresso === 0 ? '#000' : materia.progresso === 100 ? '#22c55e' : materia.progresso >= 50 ? '#ef4444' : '#22c55e'">
-                    {{ materia.progresso }}%
-                </div>
             </div>
         </div>
     </div>

@@ -64,3 +64,54 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* === BACK-BUTTON STANDARDIZATION ===
+   Ensure all .back-button elements look like the relatorios button
+   and remove any hover translate/animation that was causing movement. */
+.back-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: none !important;
+}
+.back-button:hover {
+  background: #e9e9e9;
+  transform: translateY(-50%) !important;
+}
+.back-button .arrow, .back-button .arrow-icon {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a2540;
+}
+
+/* Prevent any svg/icon animations that could still be present */
+svg, svg * { transition: none !important; transform: none !important; }
+
+/* End back-button standardization */
+
+/* === HIDE LATERAL SCROLLBAR (visual only) ===
+   Keeps page scrollable but hides the visible scrollbar track.
+   Works across modern browsers (WebKit, Firefox, IE/Edge). */
+html, body {
+  overflow-x: hidden; /* prevent horizontal scrollbar */
+}
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  width: 0; /* for vertical scrollbar */
+  height: 0; /* for horizontal scrollbar */
+}
+/* If you prefer to hide scrollbar only on large screens, wrap rules with a media query. */
+/* End hide lateral scrollbar */

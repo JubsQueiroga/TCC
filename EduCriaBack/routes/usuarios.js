@@ -34,12 +34,20 @@ function verifyToken(req, res, next) {
   });
 }
 
+// middleware para checar se o usuário é admin
+function verifyAdmin(req, res, next) {
+  // assume que verifyToken já rodou antes e preencheu req.user
+  if (!req.user) return res.status(401).json({ error: 'Token ausente ou inválido' });
+  if (req.user.role !== 'admin') return res.status(403).json({ error: 'Acesso restrito a administradores' });
+  next();
+}
+
 // ---------------------------
 // ROTAS EXISTENTES (SEU CÓDIGO, com pequenas melhorias de segurança/retorno)
 // ---------------------------
 
 router.get('/', (req, res) => {
-  db.query('SELECT id, nome, email, data_criacao, data_atualizacao FROM usuarios', (err, results) => {
+  db.query('SELECT id, nome, email, telefone, matricula, escola, serie, turma, data_nascimento, role, data_criacao, data_atualizacao FROM usuarios', (err, results) => {
     if (err) return res.status(500).json({ error: err });
     res.json(results);
   });
@@ -47,7 +55,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  db.query('SELECT id, nome, email, data_criacao, data_atualizacao FROM usuarios WHERE id = ?', [id], (err, results) => {
+  db.query('SELECT id, nome, email, telefone, matricula, escola, serie, turma, data_nascimento, role, data_criacao, data_atualizacao FROM usuarios WHERE id = ?', [id], (err, results) => {
     if (err) return res.status(500).json({ error: err });
     if (results.length === 0) return res.status(404).json({ message: 'Usuário não encontrado' });
     res.json(results[0]);
@@ -55,29 +63,46 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { nome, email, senha } = req.body;
+  // Espera receber os campos novos do front-end
+  const {
+    nome,
+    email,
+    senha,
+    telefone,
+    data_nascimento,
+    escola,
+    matricula,
+    serie,
+    turma
+  } = req.body;
 
-  // Validação dos campos
-  if (!nome || !email || !senha) {
+  // Role for regular registrations is always 'user' (do not allow public admin creation)
+  const role = 'user';
+
+  // Validação dos campos obrigatórios (nome, email, senha, telefone, matricula)
+  if (!nome || !email || !senha || !telefone || !matricula) {
     return res.status(400).json({ 
-      error: 'Todos os campos são obrigatórios',
-      campos_recebidos: { nome, email, senha: senha ? '***' : undefined }
+      error: 'Campos obrigatórios ausentes',
+      campos_recebidos: { nome, email, senha: senha ? '***' : undefined, telefone, matricula }
     });
   }
 
   try {
     const hash = await bcrypt.hash(senha, 10);
 
+    const query = `INSERT INTO usuarios 
+      (nome, email, senha, telefone, data_nascimento, escola, matricula, serie, turma, role)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
     db.query(
-      'INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)',
-      [nome, email, hash],
+      query,
+      [nome, email, hash, telefone, data_nascimento, escola, matricula, serie, turma, role],
       (err, result) => {
         if (err) {
           console.error('Erro ao inserir usuário:', err);
           
-          // Verifica se é erro de email duplicado
           if (err.code === 'ER_DUP_ENTRY') {
-            return res.status(400).json({ error: 'Email já cadastrado' });
+            return res.status(400).json({ error: 'Email ou matrícula já cadastrado' });
           }
           
           return res.status(500).json({ 
@@ -85,7 +110,20 @@ router.post('/', async (req, res) => {
             detalhes: err.message 
           });
         }
-        res.status(201).json({ id: result.insertId, nome, email });
+
+        // Busca o usuário recém-criado (sem a senha) e retorna para o front
+        db.query(
+          'SELECT id, nome, email, telefone, data_nascimento, escola, matricula, serie, turma, role FROM usuarios WHERE id = ?',
+          [result.insertId],
+          (err2, rows) => {
+            if (err2) {
+              console.error('Erro ao buscar usuário criado:', err2);
+              return res.status(201).json({ id: result.insertId, nome, email });
+            }
+            const created = rows[0];
+            return res.status(201).json({ usuario: created });
+          }
+        );
       }
     );
   } catch (err) {
@@ -119,17 +157,25 @@ router.post('/login', (req, res) => {
 
       // Gera token JWT
       const token = jwt.sign(
-        { id: usuario.id, email: usuario.email, nome: usuario.nome },
+        { id: usuario.id, email: usuario.email, nome: usuario.nome, role: usuario.role },
         SECRET_KEY,
         { expiresIn: '1h' }
       );
 
+      // Retorna também os campos adicionais para popular o perfil no front-end
       res.json({
         token,
         usuario: {
           id: usuario.id,
           nome: usuario.nome,
-          email: usuario.email
+          email: usuario.email,
+          telefone: usuario.telefone || null,
+          data_nascimento: usuario.data_nascimento || null,
+          escola: usuario.escola || null,
+          matricula: usuario.matricula || null,
+          serie: usuario.serie || null,
+          turma: usuario.turma || null,
+          role: usuario.role || 'user'
         }
       });
     } catch (bcryptErr) {
@@ -248,3 +294,4 @@ router.post('/recuperar-senha', (req, res) => {
 // ---------------------------
 module.exports = router;
 module.exports.verifyToken = verifyToken;
+module.exports.verifyAdmin = verifyAdmin;

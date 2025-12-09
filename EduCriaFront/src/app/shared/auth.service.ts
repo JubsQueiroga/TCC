@@ -91,8 +91,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  cadastrar(nome: string, email: string, senha: string): Observable<any> {
-    return this.http.post(this.apiUrl, { nome, email, senha });
+  // Envia os dados completos de cadastro ao backend.
+  // Recebe um objeto com os campos: { nome, email, senha, telefone, dataNascimento, escola, matricula, serie, turma }
+  cadastrar(payload: any): Observable<any> {
+    return this.http.post(this.apiUrl, payload);
   }
 
   listarUsuarios(): Observable<Usuario[]> {

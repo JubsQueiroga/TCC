@@ -38,6 +38,73 @@
           />
         </div>
 
+        <!-- Telefone (obrigatório) -->
+        <div class="input-group">
+          <span class="material-icons">phone</span>
+          <input
+            type="tel"
+            name="telefone"
+            [(ngModel)]="telefone"
+            placeholder="Telefone (somente números)"
+            required
+          />
+        </div>
+
+        <!-- Data de nascimento -->
+        <div class="input-group">
+          <span class="material-icons">cake</span>
+          <input
+            type="date"
+            name="dataNascimento"
+            [(ngModel)]="dataNascimento"
+            placeholder="Data de nascimento"
+          />
+        </div>
+
+        <!-- Escola -->
+        <div class="input-group">
+          <span class="material-icons">school</span>
+          <input
+            type="text"
+            name="escola"
+            [(ngModel)]="escola"
+            placeholder="Nome da escola"
+          />
+        </div>
+        
+
+        <!-- Matrícula (obrigatória) -->
+        <div class="input-group">
+          <span class="material-icons">badge</span>
+          <input
+            type="text"
+            name="matricula"
+            [(ngModel)]="matricula"
+            placeholder="Número da matrícula"
+            required
+          />
+        </div>
+
+        <!-- Série/Ano (opções em blocos) -->
+        <div class="input-group option-group">
+          <span class="material-icons">menu_book</span>
+          <div class="options" role="radiogroup" aria-label="Selecione a série">
+            <button type="button" class="option" [class.selected]="serie === '1º ano'" (click)="selectSerie('1º ano')">1º ano</button>
+            <button type="button" class="option" [class.selected]="serie === '2º ano'" (click)="selectSerie('2º ano')">2º ano</button>
+            <button type="button" class="option" [class.selected]="serie === '3º ano'" (click)="selectSerie('3º ano')">3º ano</button>
+          </div>
+        </div>
+
+        <!-- Turma (opções em blocos) -->
+        <div class="input-group option-group">
+          <span class="material-icons">group</span>
+          <div class="options" role="radiogroup" aria-label="Selecione a turma">
+            <button type="button" class="option" [class.selected]="turma === 'A'" (click)="selectTurma('A')">A</button>
+            <button type="button" class="option" [class.selected]="turma === 'B'" (click)="selectTurma('B')">B</button>
+            <button type="button" class="option" [class.selected]="turma === 'C'" (click)="selectTurma('C')">C</button>
+          </div>
+        </div>
+
         <div class="input-group">
           <span class="material-icons">lock</span>
           <input
@@ -53,6 +120,18 @@
           >
             {{ mostrarSenha ? 'visibility_off' : 'visibility' }}
           </span>
+        </div>
+
+        <!-- Confirmar senha -->
+        <div class="input-group">
+          <span class="material-icons">lock</span>
+          <input
+            [type]="mostrarSenha ? 'text' : 'password'"
+            name="confirmarSenha"
+            [(ngModel)]="confirmarSenha"
+            placeholder="Confirmar senha"
+            required
+          />
         </div>
 
         <button type="submit" class="login-button">CADASTRAR</button>

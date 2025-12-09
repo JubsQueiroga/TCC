@@ -16,6 +16,10 @@
   color: white;
   padding: 40px;
 }
+/* Priorizar espaço para o formulário (afinando o painel direito levemente) */
+.left-side {
+  flex: 1.4;
+}
 
 /* Logo e slogan */
 .logo-header {
@@ -47,7 +51,12 @@
 /* Conteúdo do formulário */
 .form-container {
   width: 100%;
-  max-width: 400px;
+  /* reduzido para evitar sobreposição em larguras médias */
+  max-width: 640px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* espaçamento vertical um pouco maior */
 }
 
 .welcome-title {
@@ -71,12 +80,73 @@
   position: relative;
   display: flex;
   align-items: center;
-  background: #e6efff;
-  border-radius: 50px;
-  padding: 10px 20px;
-  margin-bottom: 20px;
+  /* mais sutil: fundo semi-transparente para integrar com o gradiente */
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 28px;
+  padding: 10px 14px;
+  margin-bottom: 0; /* removido porque .form-container controla o gap */
   z-index: 1; /* Base z-index */
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: box-shadow 0.18s ease, transform 0.12s ease;
+  width: 100%;
+  overflow: hidden;
 }
+
+/* Grid de formulário: dois campos por linha */
+.form-container form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  grid-column-gap: 36px;
+  align-items: start;
+}
+
+/* Forçar elementos que devem ocupar toda a largura */
+.form-container form .login-button,
+.form-container form .register-text {
+  grid-column: 1 / -1;
+}
+
+/* Ajustes para os grupos de opções (serie/turma) para manter alinhamento interno) */
+.option-group .options { gap: 10px; }
+
+/* Reduzir o painel direito sutilmente para favorecer o formulário */
+.right-side { flex: 0.9; }
+
+/* Option blocks for serie/turma */
+.option-group .options {
+  display: flex;
+  gap: 8px;
+  margin-left: 8px;
+  flex-wrap: wrap;
+}
+
+.option-group .option {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.95);
+  padding: 8px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s ease, transform 0.08s ease, box-shadow 0.12s ease, color 0.12s ease;
+  /* stretch para distribuir igualmente */
+  flex: 1 1 0;
+  text-align: center;
+  min-width: 60px; /* ligeiramente menor para caber melhor */
+}
+
+.option-group .option:hover {
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-2px);
+}
+
+.option-group .option.selected {
+  background: rgba(255,255,255,0.12);
+  color: #062436;
+  box-shadow: 0 8px 18px rgba(2,24,42,0.18);
+}
+
 
 .input-group input {
   flex: 1;
@@ -84,12 +154,13 @@
   background: transparent;
   outline: none;
   font-size: 14px;
-  color: #333;
-  padding-right: 45px; /* Espaço para o ícone */
-  /* 🔥 CORREÇÃO: Mantém clicável mas não bloqueia o ícone */
+  color: rgba(255,255,255,0.95);
+  padding-right: 42px; /* Espaço para o ícone */
   pointer-events: auto;
   position: relative;
   z-index: 1;
+  /* allow flex children to shrink properly inside constrained containers */
+  min-width: 0;
 }
 
 .input-group input::placeholder {
@@ -97,31 +168,39 @@
 }
 
 .input-group .material-icons {
-  color: #666;
+  color: rgba(255,255,255,0.9);
   margin-right: 10px;
   pointer-events: none;
   z-index: 1;
+  font-size: 18px;
+}
+
+.input-group:focus-within {
+  box-shadow: 0 8px 30px rgba(2,24,42,0.15);
+  transform: translateY(-2px);
+}
+
+.input-group input::placeholder {
+  color: rgba(255,255,255,0.7);
 }
 
 /* ===== CORREÇÃO PRINCIPAL: Toggle de visibilidade ===== */
 .toggle-visibility {
   position: absolute;
-  right: 15px;
+  right: 12px;
   cursor: pointer;
-  color: #666;
+  color: rgba(255,255,255,0.85);
   user-select: none;
-  /* 🔥 CORREÇÃO 1: z-index maior que o input */
   z-index: 10 !important;
-  /* 🔥 CORREÇÃO 2: Garante que seja clicável */
   pointer-events: auto !important;
-  transition: color 0.3s ease, transform 0.1s ease;
+  transition: color 0.2s ease, transform 0.08s ease;
   margin: 0;
-  padding: 8px; /* 🔥 Área clicável maior */
+  padding: 6px; /* área clicável confortável */
   display: flex;
   align-items: center;
   justify-content: center;
-  /* 🔥 CORREÇÃO 3: Cria contexto de empilhamento isolado */
   isolation: isolate;
+  border-radius: 6px;
 }
 
 .toggle-visibility:hover {
@@ -136,27 +215,26 @@
 /* Botão de cadastrar */
 .login-button {
   width: 100%;
-  background: #00b377;
+  background: linear-gradient(90deg, #00c27a 0%, #00a86b 100%);
   color: white;
   border: none;
-  border-radius: 50px;
-  padding: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  border-radius: 40px;
+  padding: 12px 16px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0px 4px 12px rgba(0, 179, 119, 0.4);
-  font-size: 14px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.12s ease;
+  box-shadow: 0px 8px 22px rgba(0, 162, 115, 0.18);
+  font-size: 15px;
 }
 
 .login-button:hover {
-  background: #00a36c;
-  transform: translateY(-2px);
-  box-shadow: 0px 6px 16px rgba(0, 179, 119, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0px 12px 30px rgba(0, 162, 115, 0.22);
 }
 
 .login-button:active {
-  transform: translateY(0px);
+  transform: translateY(0px) scale(0.998);
 }
 
 /* Texto de login */
@@ -220,6 +298,14 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   margin: 0 auto 40px;
   width: 280px;
+}
+
+/* Pequenos ajustes responsivos para harmonia */
+@media (max-width: 480px) {
+  .welcome-title h1 { font-size: 28px; }
+  .form-container { max-width: 92%; padding: 0 12px; }
+  .input-group { padding: 10px 14px; border-radius: 32px; }
+  .option-group .options { gap: 6px; }
 }
 
 .user-avatar {
@@ -310,4 +396,5 @@
   .left-side {
     flex: 1;
   }
+  .form-container form { grid-template-columns: 1fr; }
 }

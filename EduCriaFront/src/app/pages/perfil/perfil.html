@@ -24,6 +24,16 @@
         <span class="info-value">{{ usuario.matricula }}</span>
       </div>
 
+      <div class="info-item" *ngIf="usuario.telefone">
+        <span class="info-label">Telefone:</span>
+        <span class="info-value">{{ usuario.telefone }}</span>
+      </div>
+
+      <div class="info-item" *ngIf="usuario.data_nascimento">
+        <span class="info-label">Data de nascimento:</span>
+        <span class="info-value">{{ usuario.data_nascimento | date }}</span>
+      </div>
+
       <div class="info-item">
         <span class="info-label">Email:</span>
         <span class="info-value">{{ usuario.email }}</span>
